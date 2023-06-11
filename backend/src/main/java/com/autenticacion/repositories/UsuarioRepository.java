@@ -1,4 +1,4 @@
-package com.autenticacion.models.repositories;
+package com.autenticacion.repositories;
 
 import java.util.Optional;
 

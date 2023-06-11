@@ -22,7 +22,7 @@ public class Subscription {
     @Column(name = "Durata in mesi")
     @Min(value = 1, message = "La durata deve essere maggiore o uguale ad un mese! ")
     @Max(value = 24, message = "La durata massima prevista per un abbonamento è di 24 mesi!")
-    private int durata;
+    private int duration;
 
     @Column(name = "Prezzo")
     private double price;
@@ -64,7 +64,7 @@ public class Subscription {
      * @return the duration of the subscription in months.
      */
     public int getDurata() {
-        return durata;
+        return duration;
     }
 
     /**
@@ -73,7 +73,7 @@ public class Subscription {
      * @param durata the duration of the subscription to set in months.
      */
     public void setDurata(int durata) {
-        this.durata = durata;
+        this.duration = durata;
     }
 
     /**

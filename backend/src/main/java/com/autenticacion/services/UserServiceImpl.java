@@ -13,8 +13,8 @@ import com.autenticacion.dto.UserLoginDTO;
 import com.autenticacion.jwt.JwtToken;
 import com.autenticacion.models.Role;
 import com.autenticacion.models.User;
-import com.autenticacion.models.repositories.RoleRepository;
-import com.autenticacion.models.repositories.UsuarioRepository;
+import com.autenticacion.repositories.RoleRepository;
+import com.autenticacion.repositories.UsuarioRepository;
 import com.autenticacion.services.mapper.UsuarioMapper;
 
 

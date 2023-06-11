@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.autenticacion.models.User;
-import com.autenticacion.models.repositories.UsuarioRepository;
+import com.autenticacion.repositories.UsuarioRepository;
 
 
 @Service

@@ -1,4 +1,5 @@
-package com.autenticacion.models.controllers;
+package com.autenticacion.controllers;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

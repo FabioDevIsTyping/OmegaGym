@@ -1,6 +1,5 @@
-package com.autenticacion.models.controllers;
+package com.autenticacion.controllers;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,66 +12,68 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.autenticacion.models.Card;
-import com.autenticacion.models.repositories.CardRepository;
+import com.autenticacion.models.GymClass;
+import com.autenticacion.repositories.GymClassRepository;
 
 @RestController
 @CrossOrigin
-public class CardController {
-
+public class GymClassController {
     @Autowired
-    private CardRepository cardRepository;
+    private GymClassRepository gymClassRepository;
+
+
 
     /**
-     * Retrieves a list of all cards.
+     * Retrieves a list of all gym classes.
      *
-     * @return a list of all cards.
+     * @return a list of all gym classes.
      */
-    @GetMapping("/getCards")
-    public List<Card> getAllCards() {
-        return cardRepository.findAll();
-    }
+    @GetMapping("/getGymClasses")
+    public List<GymClass> getAllGymClasses()
+    {
+        return gymClassRepository.findAll();
 
+    }
+    
     /**
-     * Adds a new card.
+     * Adds a new gym class.
      *
-     * @param card the card to add.
+     * @param GymClass the gym class to add.
      * @return a confirmation message of the addition.
      */
-    @PostMapping("/insertCard")
-    public String addCard(@RequestBody Card card) {
-        card.setStartDate(LocalDateTime.now());
-        card.setEndDate(card.getStartDate().plusMonths(card.getSubscription().getDurata()));
+    @PostMapping("/insertGymClass")
+    public String addCard(@RequestBody GymClass gymClass) {
 
-        cardRepository.save(card);
+        gymClassRepository.save(gymClass);
         return "Card added successfully!";
     }
 
     /**
-     * Deletes a card by ID.
+     * Deletes a gym class by ID.
      *
-     * @param id the ID of the card to delete.
+     * @param id the ID of the gym class to delete.
      * @return true if the card was deleted, false otherwise.
      */
-    @DeleteMapping("/deleteCard/{id}")
+    @DeleteMapping("/deleteGymClass/{id}")
     public boolean deleteCard(@PathVariable int id) {
-        if (cardRepository.existsById(id)) {
-            cardRepository.deleteById(id);
+        if (gymClassRepository.existsById(id)) {
+            gymClassRepository.deleteById(id);
             return true;
         }
         return false;
     }
 
     /**
-     * Modifies a card.
+     * Modifies a gym class.
      *
-     * @param card the card to modify.
+     * @param GymClass the card to modify.
      * @return true if the card was modified, false otherwise.
      */
     @PutMapping("/modifyCard")
-    public boolean modifyCard(@RequestBody Card card) {
-        cardRepository.save(card);
+    public boolean modifyCard(@RequestBody GymClass gymClass) {
+        gymClassRepository.save(gymClass);
         return true;
     }
-}
 
+
+}

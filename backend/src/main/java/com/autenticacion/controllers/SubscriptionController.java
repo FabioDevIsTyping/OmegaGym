@@ -1,4 +1,5 @@
-package com.autenticacion.models.controllers;
+package com.autenticacion.controllers;
+
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.autenticacion.models.Subscription;
-import com.autenticacion.models.repositories.SubscriptionRepository;
+import com.autenticacion.repositories.SubscriptionRepository;
 
 @RestController
 @CrossOrigin
