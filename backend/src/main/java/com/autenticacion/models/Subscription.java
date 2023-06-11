@@ -34,15 +34,7 @@ public class Subscription {
         return id;
     }
 
-    /**
-     * Sets the ID of the subscription.
-     *
-     * @param id The subscription ID to set.
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
+ 
     /**
      * Retrieves the name of the subscription.
      *
