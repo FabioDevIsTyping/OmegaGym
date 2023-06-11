@@ -1,6 +1,9 @@
 package com.autenticacion.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * Represents a gym subscription.
@@ -13,13 +16,20 @@ public class Subscription {
     private int id;
 
     @Column(name = "Tipologia Abbonamento")
+    @NotNull(message = "La tipologia di abbonamento non può essere null!")
     private String name;
 
     @Column(name = "Durata in mesi")
+    @Min(value = 1, message = "La durata deve essere maggiore o uguale ad un mese! ")
+    @Max(value = 24, message = "La durata massima prevista per un abbonamento è di 24 mesi!")
     private int durata;
 
     @Column(name = "Prezzo")
     private double price;
+
+    @Column(name = "Descrizione")
+    @NotNull(message = "La descrizione dell'abbonamento non può essere null!")
+    private String descrizione;
 
     /**
      * Retrieves the ID of the subscription.
@@ -83,4 +93,23 @@ public class Subscription {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    /**
+     * Retrieves the description of the subscription.
+     *
+     * @return the description of the subscription.
+     */
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    /**
+     * Sets the description of the subscription.
+     *
+     * @param descrizione the description of the subscription to set.
+     */
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
 }
