@@ -69,8 +69,8 @@ public class GymClassController {
      * @param GymClass the card to modify.
      * @return true if the card was modified, false otherwise.
      */
-    @PutMapping("/modifyCard")
-    public boolean modifyCard(@RequestBody GymClass gymClass) {
+    @PutMapping("/modifyGymClass")
+    public boolean modifyGymClass(@RequestBody GymClass gymClass) {
         gymClassRepository.save(gymClass);
         return true;
     }
