@@ -22,8 +22,6 @@ public class CardController {
     @Autowired
     private CardRepository cardRepository;
 
-
-
     /**
      * Retrieves a list of all cards.
      *
@@ -31,40 +29,46 @@ public class CardController {
      */
     @GetMapping("/getCards")
     public List<Card> getAllCards() {
-        return (List<Card>) cardRepository.findAll();
+        return cardRepository.findAll();
     }
 
     /**
-     * Adds a new subscription.
+     * Adds a new card.
      *
-     * @param subscription the subscription to add.
+     * @param card the card to add.
      * @return a confirmation message of the addition.
      */
     @PostMapping("/insertCard")
-    public String addSubscription(@RequestBody Card card) {
+    public String addCard(@RequestBody Card card) {
         cardRepository.save(card);
         return "Card added successfully!";
     }
 
+    /**
+     * Deletes a card by ID.
+     *
+     * @param id the ID of the card to delete.
+     * @return true if the card was deleted, false otherwise.
+     */
     @DeleteMapping("/deleteCard/{id}")
-    public boolean deleteCard(@PathVariable int id)
-    {
-        if(cardRepository.existsById(id))
-        {
+    public boolean deleteCard(@PathVariable int id) {
+        if (cardRepository.existsById(id)) {
             cardRepository.deleteById(id);
             return true;
         }
         return false;
     }
 
+    /**
+     * Modifies a card.
+     *
+     * @param card the card to modify.
+     * @return true if the card was modified, false otherwise.
+     */
     @PutMapping("/modifyCard")
-    public boolean modifyCard(@RequestBody Card card)
-    {
+    public boolean modifyCard(@RequestBody Card card) {
         cardRepository.save(card);
         return true;
-
     }
-
-
-    
 }
+
