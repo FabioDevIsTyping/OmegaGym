@@ -1,5 +1,6 @@
 package com.autenticacion.models.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,9 @@ public class CardController {
      */
     @PostMapping("/insertCard")
     public String addCard(@RequestBody Card card) {
+        card.setStartDate(LocalDateTime.now());
+        card.setEndDate(card.getStartDate().plusMonths(card.getSubscription().getDurata()));
+
         cardRepository.save(card);
         return "Card added successfully!";
     }
