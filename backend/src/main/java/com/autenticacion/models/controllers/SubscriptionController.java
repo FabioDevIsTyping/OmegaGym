@@ -29,7 +29,7 @@ public class SubscriptionController {
      */
     @GetMapping("/getSubscriptions")
     public List<Subscription> getAllSubscriptions() {
-        return (List<Subscription>) subscriptionRepository.findAll();
+        return subscriptionRepository.findAll();
     }
 
     /**
