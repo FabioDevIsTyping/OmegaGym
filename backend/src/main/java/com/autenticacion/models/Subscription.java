@@ -1,7 +1,6 @@
 package com.autenticacion.models;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 /**
  * Represents a gym subscription.
@@ -16,11 +15,8 @@ public class Subscription {
     @Column(name = "Tipologia Abbonamento")
     private String name;
 
-    @Column(name = "Data inizio")
-    private LocalDateTime startDate;
-
-    @Column(name = "Data fine")
-    private LocalDateTime endDate;
+    @Column(name = "Durata in mesi")
+    private int durata;
 
     @Column(name = "Prezzo")
     private double price;
@@ -34,7 +30,6 @@ public class Subscription {
         return id;
     }
 
- 
     /**
      * Retrieves the name of the subscription.
      *
@@ -54,39 +49,21 @@ public class Subscription {
     }
 
     /**
-     * Retrieves the start date of the subscription.
+     * Retrieves the duration of the subscription associated with this card.
      *
-     * @return The start date of the subscription.
+     * @return the duration of the subscription in months.
      */
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public int getDurata() {
+        return durata;
     }
 
     /**
-     * Sets the start date of the subscription.
+     * Sets the duration of the subscription associated with this card.
      *
-     * @param startDate The start date of the subscription to set.
+     * @param durata the duration of the subscription to set in months.
      */
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
-    }
-
-    /**
-     * Retrieves the end date of the subscription.
-     *
-     * @return The end date of the subscription.
-     */
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
-
-    /**
-     * Sets the end date of the subscription.
-     *
-     * @param endDate The end date of the subscription to set.
-     */
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
+    public void setDurata(int durata) {
+        this.durata = durata;
     }
 
     /**
@@ -107,5 +84,3 @@ public class Subscription {
         this.price = price;
     }
 }
-
-

@@ -11,7 +11,7 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Tipologia abbonamento")
     private Subscription subscription;
 
