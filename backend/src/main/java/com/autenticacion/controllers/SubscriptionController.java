@@ -4,6 +4,7 @@ package com.autenticacion.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.autenticacion.models.Subscription;
@@ -33,6 +34,7 @@ public class SubscriptionController {
      * @return a confirmation message of the addition.
      */
     @PostMapping("/insertSubscription")
+    @PreAuthorize("hasRole('ADMIN')") 
     public String addSubscription(@RequestBody Subscription subscription) {
         subscriptionRepository.save(subscription);
         return "Subscription added successfully!";
@@ -45,6 +47,7 @@ public class SubscriptionController {
      * @return true if the subscription was deleted successfully, false otherwise.
      */
     @DeleteMapping("/deleteSubscriptions/{id}")
+    @PreAuthorize("hasRole('ADMIN')") 
     public boolean deleteSubscription(@PathVariable int id) {
         if (subscriptionRepository.existsById(id)) {
             subscriptionRepository.deleteById(id);
@@ -60,6 +63,7 @@ public class SubscriptionController {
      * @return true if the subscription was modified successfully, false otherwise.
      */
     @PutMapping("/modifySubscriptions")
+    @PreAuthorize("hasRole('ADMIN')") 
     public boolean modifySubscription(@RequestBody Subscription subscription) {
         subscriptionRepository.save(subscription);
         return true;

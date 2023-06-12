@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.autenticacion.models.Card;
@@ -22,6 +23,7 @@ public class CardController {
      * @return a list of all cards.
      */
     @GetMapping("/getCards")
+    @PreAuthorize("hasRole('ADMIN')") 
     public List<Card> getAllCards() {
         return cardRepository.findAll();
     }
@@ -33,6 +35,7 @@ public class CardController {
      * @return a confirmation message of the addition.
      */
     @PostMapping("/insertCard")
+    @PreAuthorize("hasRole('ADMIN')") 
     public String addCard(@RequestBody Card card) {
         card.setStartDate(LocalDateTime.now());
         card.setEndDate(card.getStartDate().plusMonths(card.getSubscription().getDurata()));
@@ -47,6 +50,7 @@ public class CardController {
      * @return true if the card was deleted, false otherwise.
      */
     @DeleteMapping("/deleteCard/{id}")
+    @PreAuthorize("hasRole('ADMIN')") 
     public boolean deleteCard(@PathVariable int id) {
         if (cardRepository.existsById(id)) {
             cardRepository.deleteById(id);
@@ -62,6 +66,7 @@ public class CardController {
      * @return true if the card was modified, false otherwise.
      */
     @PutMapping("/modifyCard")
+    @PreAuthorize("hasRole('ADMIN')") 
     public boolean modifyCard(@RequestBody Card card) {
         cardRepository.save(card);
         return true;

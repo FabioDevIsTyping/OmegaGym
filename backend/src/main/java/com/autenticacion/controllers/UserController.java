@@ -50,20 +50,20 @@ public class UserController {
 		}
 	}
 
-	@GetMapping("/area/administrador")
-	@PreAuthorize("hasAuthority('ADMINISTRADOR')")
-	public ResponseEntity<?> accesoSoloAdministrador() {
+	@GetMapping("/area/admin")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	public ResponseEntity<?> accessToOnlyAdmins() {
 		return new ResponseEntity<>("You are an admin", HttpStatus.OK);
 	}
 
-	@GetMapping("/area/usuario-restringido")
-	@PreAuthorize("hasAuthority('USUARIO_RESTRINGIDO')")
-	public ResponseEntity<?> accesoSoloUsuarioRestringido() {
+	@GetMapping("/area/user")
+	@PreAuthorize("hasAuthority('USER')")
+	public ResponseEntity<?> accessToOnlyUsers() {
 		return new ResponseEntity<>("You are a user", HttpStatus.OK);
 	}
 
-	@GetMapping("/area/usuario-logueado")
-	public ResponseEntity<?> accesoSoloUsuarioLogueas() {
+	@GetMapping("/area/loggedUser")
+	public ResponseEntity<?> accessToOnlyLoggedUser() {
 		return new ResponseEntity<>("You are logged in", HttpStatus.OK);
 	}
 
