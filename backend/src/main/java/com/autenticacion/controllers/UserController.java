@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.autenticacion.dto.UserDTO;
 import com.autenticacion.dto.UserLoginDTO;
 import com.autenticacion.services.UserService;
-
 import jakarta.validation.Valid;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/user")
 public class UserController {
 
@@ -35,10 +36,10 @@ public class UserController {
 
 	}
 
+
 	@PostMapping("/signup")
 	public ResponseEntity<?> crear(@Valid @RequestBody UserDTO usuario, BindingResult validaciones)
 			throws Exception {
-
 		if (validaciones.hasErrors()) {
 			return new ResponseEntity<String>("You need to insert all informations", HttpStatus.BAD_REQUEST);
 		}

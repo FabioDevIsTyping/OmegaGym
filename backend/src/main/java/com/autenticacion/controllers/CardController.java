@@ -28,6 +28,8 @@ public class CardController {
         return cardRepository.findAll();
     }
 
+    
+
     /**
      * Adds a new card.
      *

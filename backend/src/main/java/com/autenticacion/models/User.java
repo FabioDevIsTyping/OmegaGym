@@ -30,9 +30,9 @@ public class User implements UserDetails {
 	private Long id;
 
 	@Column(unique = true)
-	private String nombreUsuario;
+	private String username;
 
-	private String clave;
+	private String password;
 
 	@ManyToOne
 	@JoinColumn(name = "id_rol", nullable = false)
@@ -51,12 +51,12 @@ public class User implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return clave;
+		return password;
 	}
 
 	@Override
 	public String getUsername() {
-		return nombreUsuario;
+		return username;
 	}
 
 	@Override
@@ -87,20 +87,13 @@ public class User implements UserDetails {
 		this.id = id;
 	}
 
-	public String getNombreUsuario() {
-		return nombreUsuario;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
-
-	public String getClave() {
-		return clave;
-	}
-
-	public void setClave(String clave) {
-		this.clave = clave;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Role getRol() {

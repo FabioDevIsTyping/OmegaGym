@@ -18,8 +18,8 @@ public class JwtToken {
 	
 	private static final long TIEMPO_EXPIRACION = 3600_000;
 
-	public static String generarTokenJWT(String nombreUsuario) {
-		return Jwts.builder().setSubject(nombreUsuario)
+	public static String generarTokenJWT(String username) {
+		return Jwts.builder().setSubject(username)
                 .setExpiration(Date.from(Instant.now().plusMillis(TIEMPO_EXPIRACION))).signWith(LlAVE_SECRETA)
                 .compact();
 	}
@@ -33,7 +33,7 @@ public class JwtToken {
 		}
 	}
 	
-	public static String getNombreUsuario(String token) {
+	public static String tokenRecognizeString(String token) {
 		JwtParser parser = Jwts.parserBuilder().setSigningKey(LlAVE_SECRETA).build();
 	    return parser.parseClaimsJws(token).getBody().getSubject();
 	}

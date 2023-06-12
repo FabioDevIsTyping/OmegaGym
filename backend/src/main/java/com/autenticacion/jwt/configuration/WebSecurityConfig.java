@@ -12,6 +12,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.autenticacion.jwt.JwtDeniedAccessError;
 import com.autenticacion.jwt.JwtAuthenticationError;
@@ -22,7 +27,8 @@ import com.autenticacion.services.UserDetailsImpl;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig {
+public class WebSecurityConfig
+{
 
 	@Autowired
 	private UserDetailsImpl userDetailsImpl;
@@ -50,7 +56,7 @@ public class WebSecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable().authorizeHttpRequests(authConfig -> {
+        http.cors().disable().csrf().disable().authorizeHttpRequests(authConfig -> {
             authConfig.requestMatchers("/user/login").permitAll();
             authConfig.requestMatchers("/user/signup").permitAll();
             authConfig.anyRequest().authenticated();

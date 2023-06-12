@@ -14,7 +14,7 @@ import com.autenticacion.jwt.JwtToken;
 import com.autenticacion.models.Role;
 import com.autenticacion.models.User;
 import com.autenticacion.repositories.RoleRepository;
-import com.autenticacion.repositories.UsuarioRepository;
+import com.autenticacion.repositories.UserRepository;
 import com.autenticacion.services.mapper.UsuarioMapper;
 
 
@@ -22,7 +22,7 @@ import com.autenticacion.services.mapper.UsuarioMapper;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UserRepository usuarioRepository;
 
 	@Autowired
 	private UsuarioMapper usuarioMapper;
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 	public UserDTO crear(UserDTO usuarioDTO) throws Exception  {
 
 		User usuario = usuarioMapper.toUsuario(usuarioDTO);
-		usuario.setClave(passwordEncoder.encode(usuarioDTO.getPassword()));
+		usuario.setPassword(passwordEncoder.encode(usuarioDTO.getPassword()));
 		Role rol = rolRepository.findByNombreRol(usuarioDTO.getRole()).orElseThrow(()-> new Exception("This role doesnt exist in the database, you need to insert it in your database first!"));
 		usuario.setRol(rol);
 		usuario = usuarioRepository.save(usuario);
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
 		String token = JwtToken.generarTokenJWT(usuarioLoginDTO.getUsername());
 
-		User usuario = usuarioRepository.buscarPorNombreUsuario(usuarioLoginDTO.getUsername()).orElse(null);
+		User usuario = usuarioRepository.buscarPorusername(usuarioLoginDTO.getUsername()).orElse(null);
 		
 		UserDTO usuarioDTO = usuarioMapper.toUsuarioDTO(usuario);
 
