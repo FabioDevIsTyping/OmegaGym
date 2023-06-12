@@ -20,7 +20,7 @@ public class ClassScheduleController {
      *
      * @return a list of all class schedules.
      */
-    @GetMapping("/classSchedules")
+    @GetMapping("/getAllClassSchedules")
     public List<ClassSchedule> getAllClassSchedules() {
         return classScheduleRepository.findAll();
     }
@@ -31,7 +31,7 @@ public class ClassScheduleController {
      * @param classSchedule the class schedule to add.
      * @return a confirmation message of the addition.
      */
-    @PostMapping("/classSchedules")
+    @PostMapping("/insertClassSchedule")
     public String addClassSchedule(@RequestBody ClassSchedule classSchedule) {
         classScheduleRepository.save(classSchedule);
         return "Class schedule added successfully!";
@@ -43,7 +43,7 @@ public class ClassScheduleController {
      * @param id the ID of the class schedule to delete.
      * @return true if the class schedule was deleted, false otherwise.
      */
-    @DeleteMapping("/classSchedules/{id}")
+    @DeleteMapping("/deleteClassSchedules/{id}")
     public boolean deleteClassSchedule(@PathVariable int id) {
         if (classScheduleRepository.existsById(id)) {
             classScheduleRepository.deleteById(id);
@@ -58,7 +58,7 @@ public class ClassScheduleController {
      * @param classSchedule the class schedule to modify.
      * @return true if the class schedule was modified, false otherwise.
      */
-    @PutMapping("/classSchedules")
+    @PutMapping("/modifyClassSchedules")
     public boolean modifyClassSchedule(@RequestBody ClassSchedule classSchedule) {
         classScheduleRepository.save(classSchedule);
         return true;
