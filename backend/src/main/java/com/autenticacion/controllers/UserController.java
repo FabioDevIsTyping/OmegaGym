@@ -47,7 +47,7 @@ public class UserController {
 		try {
 			return new ResponseEntity<UserDTO>(usuarioService.crear(usuario), HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<String>("This username already exists.", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
