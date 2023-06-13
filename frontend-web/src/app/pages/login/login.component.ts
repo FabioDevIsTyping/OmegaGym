@@ -14,20 +14,11 @@ export class LoginComponent implements OnInit {
 
   user: User = new User
   role: Role = new Role
+  username:string = ''
+  password:string = ''
 
-  loginObj: any = {
-    UserId: 0,
-    UserName: '',
-    Password: '',
-    Result: false,
-    Message: ''
-  };
-  registerObj: any = {
-    UserId: 0,
-    UserName: '',
-    Password: ''
 
-  };
+  
   isRegister: boolean = false;
   constructor(private loginService: LoginService, private router: Router, private http: HttpClient) { }
 
@@ -42,15 +33,15 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.http.post("http://localhost:61334/api/Registration/Login", this.loginObj).subscribe((response: any) => {
-      debugger;
-      if (response.result) {
-        alert(response.message)
-        this.router.navigateByUrl('way2user-dashboard');
-      } else {
-        alert(response.message)
+    this.loginService.authenticate(this.username,this.password).subscribe().add(
+      ()=>{
+        this.router.navigate(['/quizApp']).then(() => {
+          window.location.reload();
+        });
+
       }
-    })
+    )
+
 
   }
 
