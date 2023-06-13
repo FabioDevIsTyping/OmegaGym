@@ -58,7 +58,7 @@ public class WebSecurityConfig
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors().disable().csrf().disable().authorizeHttpRequests(authConfig -> {
             authConfig.requestMatchers("/user/login").permitAll();
-            authConfig.requestMatchers("/user/signup").permitAll();
+            authConfig.requestMatchers("/user/signup","/insertSubscription").permitAll();
             authConfig.anyRequest().authenticated();
         }).exceptionHandling().authenticationEntryPoint(jwtAutenticacionError).accessDeniedHandler(jwtAccesoDenegadoError).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

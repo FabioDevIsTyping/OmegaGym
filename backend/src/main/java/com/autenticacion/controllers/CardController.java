@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.autenticacion.models.Card;
 import com.autenticacion.repositories.CardRepository;
+import com.autenticacion.repositories.UserRepository;
 
 @RestController
 @CrossOrigin
@@ -16,6 +17,8 @@ public class CardController {
 
     @Autowired
     private CardRepository cardRepository;
+    @Autowired 
+    private UserRepository userRepository;
 
     /**
      * Retrieves a list of all cards.
@@ -23,9 +26,16 @@ public class CardController {
      * @return a list of all cards.
      */
     @GetMapping("/getCards")
-    @PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<Card> getAllCards() {
         return cardRepository.findAll();
+    }
+
+    @GetMapping("/getCard/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public Card getCard(@PathVariable long id){
+            
+        return cardRepository.findByUser(userRepository.findById(id).get());
     }
 
     
@@ -37,7 +47,7 @@ public class CardController {
      * @return a confirmation message of the addition.
      */
     @PostMapping("/insertCard")
-    @PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String addCard(@RequestBody Card card) {
         card.setStartDate(LocalDateTime.now());
         card.setEndDate(card.getStartDate().plusMonths(card.getSubscription().getDurata()));
@@ -52,7 +62,7 @@ public class CardController {
      * @return true if the card was deleted, false otherwise.
      */
     @DeleteMapping("/deleteCard/{id}")
-    @PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasAuthority('ADMIN')")
     public boolean deleteCard(@PathVariable int id) {
         if (cardRepository.existsById(id)) {
             cardRepository.deleteById(id);
@@ -68,7 +78,7 @@ public class CardController {
      * @return true if the card was modified, false otherwise.
      */
     @PutMapping("/modifyCard")
-    @PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasAuthority('ADMIN')")
     public boolean modifyCard(@RequestBody Card card) {
         cardRepository.save(card);
         return true;

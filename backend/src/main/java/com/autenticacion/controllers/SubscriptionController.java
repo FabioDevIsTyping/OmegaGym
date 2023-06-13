@@ -34,7 +34,7 @@ public class SubscriptionController {
      * @return a confirmation message of the addition.
      */
     @PostMapping("/insertSubscription")
-    @PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String addSubscription(@RequestBody Subscription subscription) {
         subscriptionRepository.save(subscription);
         return "Subscription added successfully!";

@@ -12,6 +12,7 @@ import { UserLayoutComponent } from './pages/user-layout/user-layout.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
 import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-crud.component';
+import { CardComponent } from './pages/card/card.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'card',
+    component: CardComponent
   },
   {
     path: 'courses',

@@ -24,6 +24,11 @@ public class Card {
     @NotNull(message = "La data di scadenza non può essere null!")
     private LocalDateTime endDate;
 
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    private User user;
+    
+
+
     /**
      * Returns the ID of the card.
      *
@@ -95,4 +100,14 @@ public class Card {
         
         this.endDate = endDate;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
 }

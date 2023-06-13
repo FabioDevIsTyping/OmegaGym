@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.loginService.authenticate(this.username,this.password).subscribe().add(
       ()=>{
-        this.router.navigate(['/quizApp']).then(() => {
+        this.router.navigate(['/card']).then(() => {
           window.location.reload();
         });
 

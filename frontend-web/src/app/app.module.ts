@@ -19,6 +19,7 @@ import { VoidTableComponent } from './reusable/void-table/void-table.component';
 import { TabsComponent } from './reusable/tabs/tabs.component';
 import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
 import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-crud.component';
+import { CardComponent } from './pages/card/card.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-cru
     VoidTableComponent,
     TabsComponent,
     QuizAppComponent,
-    StepperCrudComponent
+    StepperCrudComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

@@ -31,6 +31,7 @@ public class Subscription {
     @NotNull(message = "La descrizione dell'abbonamento non può essere null!")
     private String descrizione;
 
+
     /**
      * Retrieves the ID of the subscription.
      *
@@ -111,5 +112,17 @@ public class Subscription {
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+
+
+    
 
 }
