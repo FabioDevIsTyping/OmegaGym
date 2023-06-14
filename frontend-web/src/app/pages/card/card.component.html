@@ -1,27 +1,83 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <div class="center">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Your card</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Prenota Lezione</a>
-            <a class="nav-item nav-link" href="#">Vedi abbonamenti</a>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
-          </div>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">
+                <i class="fa fa-home"></i>
+                Home
+                <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-envelope-o">
+                  <span class="badge badge-danger">11</span>
+                </i>
+                Link
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">
+                <i class="fa fa-envelope-o">
+                  <span class="badge badge-warning">11</span>
+                </i>
+                Disabled
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-envelope-o">
+                  <span class="badge badge-primary">11</span>
+                </i>
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav ">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-bell">
+                  <span class="badge badge-info">11</span>
+                </i>
+                Test
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-globe">
+                  <span class="badge badge-success">11</span>
+                </i>
+                Test
+              </a>
+            </li>
+          </ul>
+   
         </div>
       </nav>
     <div class="card">
         <div class="additional">
             <div class="user-card">
                 <div class="level center">
-                    Level 13
+                    {{card.user?.username}}
                 </div>
                 <div class="points center">
-                    5,312 Points
+                   {{card.subscription?.name}}
                 </div>
                 <svg width="110" height="110" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img"
                     aria-labelledby="title desc" class="center">
@@ -155,10 +211,10 @@
         <div class="additional">
             <div class="user-card">
                 <div class="level center">
-                    Level 13
+                    {{card.user?.username}}
                 </div>
                 <div class="points center">
-                    5,312 Points
+                    {{card.subscription?.name}}
                 </div>
                 <svg width="110" height="110" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img"
                     aria-labelledby="title desc" class="center">
