@@ -12,7 +12,7 @@ import com.autenticacion.repositories.CardRepository;
 import com.autenticacion.repositories.UserRepository;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CardController {
 
     @Autowired
@@ -31,12 +31,7 @@ public class CardController {
         return cardRepository.findAll();
     }
 
-    @GetMapping("/getCard/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public Card getCard(@PathVariable long id){
-            
-        return cardRepository.findByUser(userRepository.findById(id).get());
-    }
+
 
     
 
@@ -82,6 +77,12 @@ public class CardController {
     public boolean modifyCard(@RequestBody Card card) {
         cardRepository.save(card);
         return true;
+    }
+
+    @GetMapping("/getCard/{id}")
+    public Card getCard(@PathVariable long id){
+            
+        return cardRepository.findByUser(userRepository.findById(id).get());
     }
 }
 

@@ -23,6 +23,7 @@ export class LoginService {
       map(
         result=>{
           sessionStorage.setItem('username',username)
+          sessionStorage.setItem('id',result.id)
           let token = result.token;
           sessionStorage.setItem('token',token)
           sessionStorage.setItem('role',result.role)
@@ -31,4 +32,12 @@ export class LoginService {
       ))
 
   }
+
+  isUserLoggedIn() {
+    let user = sessionStorage.getItem('token');
+    let username = sessionStorage.getItem('username');
+    return !(user && username === null)
+  }
+
+
 }

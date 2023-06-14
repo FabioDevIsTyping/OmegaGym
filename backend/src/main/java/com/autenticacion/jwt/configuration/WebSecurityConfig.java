@@ -16,7 +16,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.autenticacion.jwt.JwtDeniedAccessError;
 import com.autenticacion.jwt.JwtAuthenticationError;
@@ -27,7 +26,7 @@ import com.autenticacion.services.UserDetailsImpl;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig
+public class WebSecurityConfig  
 {
 
 	@Autowired
@@ -58,7 +57,7 @@ public class WebSecurityConfig
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors().disable().csrf().disable().authorizeHttpRequests(authConfig -> {
             authConfig.requestMatchers("/user/login").permitAll();
-            authConfig.requestMatchers("/user/signup","/insertSubscription").permitAll();
+            authConfig.requestMatchers("/user/signup","/insertSubscription","/getCard/{id}").permitAll();
             authConfig.anyRequest().authenticated();
         }).exceptionHandling().authenticationEntryPoint(jwtAutenticacionError).accessDeniedHandler(jwtAccesoDenegadoError).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -68,4 +67,7 @@ public class WebSecurityConfig
 
         return http.build();
     }
+
+
+
 }
