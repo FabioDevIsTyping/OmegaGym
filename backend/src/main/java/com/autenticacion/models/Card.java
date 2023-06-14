@@ -1,6 +1,7 @@
 package com.autenticacion.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -18,11 +19,11 @@ public class Card {
 
     @Column(name = "Data inizio")
     @NotNull(message = "La data di inizio non può essere null!")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "Data scadenza")
     @NotNull(message = "La data di scadenza non può essere null!")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     private User user;
@@ -61,7 +62,7 @@ public class Card {
      *
      * @return the start date
      */
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
@@ -70,7 +71,7 @@ public class Card {
      *
      * @param startDate the start date to set
      */
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
@@ -79,7 +80,7 @@ public class Card {
      *
      * @return the end date
      */
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
@@ -89,7 +90,7 @@ public class Card {
      * @param endDate the end date to set
      * @throws IllegalArgumentException if the endDate is null or before the startDate
      */
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         if (endDate == null) {
             throw new IllegalArgumentException("La data di scadenza non può essere null!");
         }

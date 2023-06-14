@@ -1,9 +1,11 @@
 package com.autenticacion.controllers;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,14 +43,23 @@ public class CardController {
      * @param card the card to add.
      * @return a confirmation message of the addition.
      */
-    @PostMapping("/insertCard")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public String addCard(@RequestBody Card card) {
-        card.setStartDate(LocalDateTime.now());
-        card.setEndDate(card.getStartDate().plusMonths(card.getSubscription().getDurata()));
+@PostMapping("/insertCard")
+@PreAuthorize("hasAuthority('ADMIN')")
+public ResponseEntity<String> addCard(@RequestBody Card card) {
+    try {
+        card.setStartDate(LocalDate.now());
+
+        // Calcola la data di fine in base alla durata dell'abbonamento
+        LocalDate endDate = card.getStartDate().plusMonths(card.getSubscription().getDuration());
+        card.setEndDate(endDate);
+
         cardRepository.save(card);
-        return "Card added successfully!";
+        return ResponseEntity.ok("Card added successfully!");
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add card: " + e.getMessage());
     }
+}
+
 
     /**
      * Deletes a card by ID.
