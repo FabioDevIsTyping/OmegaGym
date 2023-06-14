@@ -178,12 +178,12 @@
         <div class="more-info">
           <h1>{{card.user?.username}}</h1>
           <div class="coords">
-            <span>Group Name</span>
-            <span>Joined January 2019</span>
+            <span>Inizio abbonamento</span>
+            <span>{{ card.startDate | date:'d MMMM y' }}</span>
           </div>
           <div class="coords">
-            <span>Position/Role</span>
-            <span>City, Country</span>
+            <span>Fine abbonamento</span>
+            <span>{{ card.endDate | date:'d MMMM y' }}</span>
           </div>
           <div class="stats">
             <div>
