@@ -1,11 +1,9 @@
 package com.autenticacion.models;
 
+
 import org.quartz.*;
-
 import com.autenticacion.services.CardExpirationJob;
-
 import static org.quartz.CronScheduleBuilder.*;
-
 
 public class QuartzSchedulerConfig {
 
@@ -25,7 +23,21 @@ public class QuartzSchedulerConfig {
                 .withSchedule(dailyAtHourAndMinute(0, 0)) // Esegue il job ogni giorno alle 00:00
                 .build();
 
-        scheduler.scheduleJob(job, trigger);
-        scheduler.start();
+        boolean triggerExists = scheduler.checkExists(trigger.getKey());
+
+        if (!triggerExists) {
+            scheduler.start();
+            scheduler.scheduleJob(job, trigger);
+        } else {
+            String newTriggerName = "cardExpirationTrigger_" + System.currentTimeMillis();
+            Trigger newTrigger = TriggerBuilder.newTrigger()
+                    .withIdentity(newTriggerName, "group1")
+                    .startNow()
+                    .withSchedule(dailyAtHourAndMinute(0, 0))
+                    .build();
+
+            scheduler.start();
+            scheduler.scheduleJob(job, newTrigger);
+        }
     }
 }

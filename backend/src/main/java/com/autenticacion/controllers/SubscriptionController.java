@@ -47,7 +47,6 @@ public class SubscriptionController {
      * @return true if the subscription was deleted successfully, false otherwise.
      */
     @DeleteMapping("/deleteSubscriptions/{id}")
-    @PreAuthorize("hasRole('ADMIN')") 
     public boolean deleteSubscription(@PathVariable int id) {
         if (subscriptionRepository.existsById(id)) {
             subscriptionRepository.deleteById(id);
@@ -63,7 +62,6 @@ public class SubscriptionController {
      * @return true if the subscription was modified successfully, false otherwise.
      */
     @PutMapping("/modifySubscriptions")
-    @PreAuthorize("hasRole('ADMIN')") 
     public boolean modifySubscription(@RequestBody Subscription subscription) {
         subscriptionRepository.save(subscription);
         return true;

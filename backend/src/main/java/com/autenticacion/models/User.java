@@ -38,8 +38,6 @@ public class User implements UserDetails {
 	@JoinColumn(name = "id_rol", nullable = false)
 	private Role rol;
 
-	@Column(unique = true)
-	private String email;
 
 	
 
@@ -107,13 +105,5 @@ public class User implements UserDetails {
 		this.rol = rol;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
 	
 }
