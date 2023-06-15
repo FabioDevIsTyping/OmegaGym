@@ -10,6 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.autenticacion.models.Card;
+import com.autenticacion.models.User;
 import com.autenticacion.repositories.CardRepository;
 import com.autenticacion.repositories.UserRepository;
 
@@ -19,7 +20,7 @@ public class CardController {
 
     @Autowired
     private CardRepository cardRepository;
-    @Autowired 
+    @Autowired
     private UserRepository userRepository;
 
     /**
@@ -33,33 +34,35 @@ public class CardController {
         return cardRepository.findAll();
     }
 
-
-
-    
-
     /**
      * Adds a new card.
      *
      * @param card the card to add.
      * @return a confirmation message of the addition.
      */
-@PostMapping("/insertCard")
-@PreAuthorize("hasAuthority('ADMIN')")
-public ResponseEntity<String> addCard(@RequestBody Card card) {
-    try {
-        card.setStartDate(LocalDate.now());
+    @PostMapping("/insertCard")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<String> addCard(@RequestBody Card card) {
+        try {
+            // Verifica se l'utente ha già una carta attiva
+            User user = card.getUser();
+            if (userHasActiveCard(user)) {
+                return ResponseEntity.badRequest().body("Failed to add card: User already has an active card.");
+            }
 
-        // Calcola la data di fine in base alla durata dell'abbonamento
-        LocalDate endDate = card.getStartDate().plusMonths(card.getSubscription().getDuration());
-        card.setEndDate(endDate);
+            card.setStartDate(LocalDate.now());
 
-        cardRepository.save(card);
-        return ResponseEntity.ok("Card added successfully!");
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add card: " + e.getMessage());
+            // Calcola la data di fine in base alla durata dell'abbonamento
+            LocalDate endDate = card.getStartDate().plusMonths(card.getSubscription().getDuration());
+            card.setEndDate(endDate);
+
+            cardRepository.save(card);
+            return ResponseEntity.ok("Card added successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to add card: " + e.getMessage());
+        }
     }
-}
-
 
     /**
      * Deletes a card by ID.
@@ -92,9 +95,14 @@ public ResponseEntity<String> addCard(@RequestBody Card card) {
 
     @GetMapping("/getCard/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public Card getCard(@PathVariable long id){
-            
+    public Card getCard(@PathVariable long id) {
+
         return cardRepository.findByUser(userRepository.findById(id).get());
     }
-}
 
+    private boolean userHasActiveCard(User user) {
+        // Controlla se l'utente ha già una carta attiva nel sistema
+        Card activeCard = cardRepository.findByUser(user);
+        return activeCard != null;
+    }
+}

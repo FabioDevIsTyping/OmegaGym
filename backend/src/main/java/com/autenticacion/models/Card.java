@@ -2,7 +2,6 @@ package com.autenticacion.models;
 
 import java.time.LocalDate;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -27,8 +26,9 @@ public class Card {
 
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     private User user;
-    
 
+    @Column(name = "Validità carta")
+    private Boolean isActive;
 
     /**
      * Returns the ID of the card.
@@ -88,17 +88,18 @@ public class Card {
      * Sets the end date of the card's subscription.
      * 
      * @param endDate the end date to set
-     * @throws IllegalArgumentException if the endDate is null or before the startDate
+     * @throws IllegalArgumentException if the endDate is null or before the
+     *                                  startDate
      */
     public void setEndDate(LocalDate endDate) {
         if (endDate == null) {
             throw new IllegalArgumentException("La data di scadenza non può essere null!");
         }
-        
+
         if (endDate.isBefore(startDate)) {
             throw new IllegalArgumentException("La data di scadenza non può essere prima di quella di inizio.");
         }
-        
+
         this.endDate = endDate;
     }
 
@@ -110,5 +111,22 @@ public class Card {
         this.user = user;
     }
 
-    
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public Card(LocalDate startDate, LocalDate endDate, boolean isActive) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isActive = isActive;
+    }
+
+    public Card() {
+        // Costruttore di default
+    }
+
 }
