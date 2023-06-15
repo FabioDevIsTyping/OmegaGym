@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Card } from '../class/card';
+import { Subscription } from '../class/subscription';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,16 @@ export class CardService {
    });
     return this.http.get<Card>(this.url + "getCard/" + id,{ headers: reqHeader });
   }
+
+  public insertCard(card:Card){
+    var reqHeader = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+   });
+   return this.http.post<Card>(this.url + "insertCard", card,{ headers: reqHeader })
+  }
+
+
 
 
 

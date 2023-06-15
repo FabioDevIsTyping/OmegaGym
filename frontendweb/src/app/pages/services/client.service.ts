@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Subscription } from '../class/subscription';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../class/user';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class SubscriptionService {
+export class ClientService {
 
   private url: string
 
@@ -14,21 +16,20 @@ export class SubscriptionService {
     this.url = 'http://localhost:8080/';
   }
 
-  public getAllSubscriptions(): Observable<Subscription[]>{
+  public getAllUsers(): Observable<User[]>{
     var reqHeader = new HttpHeaders({ 
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + sessionStorage.getItem("token")
    });
-   return this.http.get<Subscription[]>(this.url + "getSubscriptions",{ headers: reqHeader } )
-  }
-
-  public getSubscription(id:number): Observable<Subscription>{
-    var reqHeader = new HttpHeaders({ 
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + sessionStorage.getItem("token")
-   });
-   return this.http.get<Subscription>(this.url + "getSingleSubscription/" + id,{ headers: reqHeader } )
+   return this.http.get<User[]>(this.url + "user/getAllUsers",{ headers: reqHeader } )
   }
 
   
+  public getUser(username:string): Observable<User>{
+    var reqHeader = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+   });
+   return this.http.get<User>(this.url + "user/getSingleUser" + "/" + username,{ headers: reqHeader } )
+  }
 }

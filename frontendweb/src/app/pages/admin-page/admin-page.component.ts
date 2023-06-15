@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CardService } from '../services/card.service';
+import { Subscription } from '../class/subscription';
+import { SubscriptionService } from '../services/subscription.service';
+import { ClientService } from '../services/client.service';
+import { User } from '../class/user';
+import { Card } from '../class/card';
 
 @Component({
   selector: 'app-admin-page',
@@ -7,16 +13,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cardService: CardService, private subscriptionService: SubscriptionService,
+    private clientService: ClientService) { }
 
   isAdmin:boolean=false
+  subscriptionId:number=0
+  startDate:Date | undefined
+  endDate:Date | undefined
+  userId:number=0
+  subscriptionList:Subscription[]=[]
+  clientList:User[]=[]
+  username:string=""
+  user:User = new User
+  card:Card = new Card
+  selectedSubscription: number = 0
+  subscription:Subscription = new Subscription
+
+  changeObject(obj:any){
+    console.log(obj)
+  }
+
 
   ngOnInit()  {
     if(sessionStorage.getItem("role")=='ADMIN'){
       this.isAdmin=true
-      
-
+      this.subscriptionService.getAllSubscriptions().subscribe(result=>{
+        this.subscriptionList=result
+        console.log(this.subscriptionList)
+      })
+      this.clientService.getAllUsers().subscribe(result=>{
+        this.clientList=result
+        console.log(this.clientList)
+      })
     }
   }
 
+  submitData() {
+    this.clientService.getUser(this.username).subscribe(result=>{
+      this.user=result
+      console.log(this.user)
+      this.subscriptionService.getSubscription(this.selectedSubscription).subscribe(result=>{
+        this.subscription=result
+        console.log(this.subscription)
+        console.log(this.selectedSubscription)
+        this.card.user=this.user
+        this.card.subscription=this.subscription
+        this.cardService.insertCard(this.card).subscribe()
+      })
+    })
+
+
+
+
+
+    
+    // Aggiungi qui la logica per inviare i dati al server o effettuare altre operazioni necessarie
+  }
+  
 }

@@ -45,10 +45,10 @@ public class CardController {
     public ResponseEntity<String> addCard(@RequestBody Card card) {
         try {
             // Verifica se l'utente ha già una carta attiva
-            User user = card.getUser();
-            if (userHasActiveCard(user)) {
-                return ResponseEntity.badRequest().body("Failed to add card: User already has an active card.");
-            }
+            // User user = card.getUser();
+            // // if (userHasActiveCard(user)) {
+            // //     return ResponseEntity.badRequest().body("Failed to add card: User already has an active card.");
+            // // }
 
             card.setStartDate(LocalDate.now());
 

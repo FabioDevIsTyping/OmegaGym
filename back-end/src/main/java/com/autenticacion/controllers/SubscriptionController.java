@@ -23,6 +23,7 @@ public class SubscriptionController {
      * @return a list of all subscriptions.
      */
     @GetMapping("/getSubscriptions")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<Subscription> getAllSubscriptions() {
         return subscriptionRepository.findAll();
     }
@@ -47,7 +48,7 @@ public class SubscriptionController {
      * @return true if the subscription was deleted successfully, false otherwise.
      */
     @DeleteMapping("/deleteSubscriptions/{id}")
-    @PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasAuthority('ADMIN')")
     public boolean deleteSubscription(@PathVariable int id) {
         if (subscriptionRepository.existsById(id)) {
             subscriptionRepository.deleteById(id);
@@ -63,9 +64,17 @@ public class SubscriptionController {
      * @return true if the subscription was modified successfully, false otherwise.
      */
     @PutMapping("/modifySubscriptions")
-    @PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasAuthority('ADMIN')") 
     public boolean modifySubscription(@RequestBody Subscription subscription) {
         subscriptionRepository.save(subscription);
         return true;
     }
+
+
+    @GetMapping("/getSingleSubscription/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+        public Subscription getSubscription(@PathVariable int id) {
+        return subscriptionRepository.findById(id).get();
+    }
+
 }

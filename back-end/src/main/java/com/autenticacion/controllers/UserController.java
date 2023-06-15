@@ -1,5 +1,8 @@
 package com.autenticacion.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,13 +10,15 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.autenticacion.dto.UserDTO;
 import com.autenticacion.dto.UserLoginDTO;
+import com.autenticacion.models.User;
+import com.autenticacion.repositories.UserRepository;
 import com.autenticacion.services.UserService;
 import jakarta.validation.Valid;
 
@@ -24,6 +29,8 @@ public class UserController {
 
 	@Autowired
 	private UserService usuarioService;
+	@Autowired
+	private UserRepository userRepository;
 
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@Valid @RequestBody UserLoginDTO usuarioLogin, BindingResult bindingResult) {
@@ -65,5 +72,26 @@ public class UserController {
 	public ResponseEntity<?> accessToOnlyLoggedUser() {
 		return new ResponseEntity<>("You are logged in", HttpStatus.OK);
 	}
+
+	@GetMapping("/getAllUsers")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	public List<User> getAllUsers() {
+		List<User> userList = (List<User>) userRepository.findAll();
+		List<User> filteredUserList = new ArrayList<>();
+
+		userList.forEach(user -> {
+			if (user.getRol().getId()==2) {
+				filteredUserList.add(user);
+			}
+		});
+		return filteredUserList;
+	}
+
+	@GetMapping("/getSingleUser/{username}")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	public User getSingleUser(@PathVariable String username) {
+		return userRepository.findByUsername(username);
+	}
+
 
 }
