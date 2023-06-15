@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddUserComponent } from './pages/add-user/add-user.component';
-import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
-import { AdminLayoutComponent } from './pages/admin-layout/admin-layout.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -13,11 +11,17 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
 import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-crud.component';
 import { CardComponent } from './pages/card/card.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent
+  },
+  {
+    path: 'admin-page',
+    component: AdminPageComponent
+
   },
   {
     path: 'quizApp',
@@ -48,24 +52,6 @@ const routes: Routes = [
     component: RolesComponent
   },
   
-  {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: 'admin-dash',
-        component: AdminDashboardComponent
-      },
-      {
-        path: 'employee',
-        component: EmployeeComponent
-      },
-      {
-        path: 'roles',
-        component: RolesComponent
-      }
-    ]
-  },
   {
     path: '',
     component: UserLayoutComponent,
@@ -99,10 +85,6 @@ const routes: Routes = [
       {
         path: 'way2user-list',
         component: UserListComponent
-      },
-      {
-        path: 'way2admin-dash',
-        component: AdminDashboardComponent
       },
       {
         path: 'way2employee',

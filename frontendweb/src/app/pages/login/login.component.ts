@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   onRegister() {
-    this.role.role="ADMIN"
+    this.role.role="USER"
     this.user.role=this.role.role
     console.log(this.user)
     this.loginService.register(this.user).subscribe()

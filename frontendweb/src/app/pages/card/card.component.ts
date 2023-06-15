@@ -16,16 +16,19 @@ export class CardComponent implements OnInit {
    card:Card=new Card
    subscription:Subscription=new Subscription
 
+   isUser:boolean=false
+
   ngOnInit() {
+    if(sessionStorage.getItem("role")=='USER'){
+      this.isUser=true;
+    }
     console.log(sessionStorage)
     this.cardService.getCardFromClient(Number(sessionStorage.getItem("id"))).subscribe(result=>{
       console.log(result)
       this.card=result
       this.subscription.name=result.subscription?.name
     })
-    this.cardService.getAuth().subscribe(result=>{
-      console.log(result)
-    })
+
   }
 
 }

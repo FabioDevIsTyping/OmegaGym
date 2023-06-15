@@ -22,13 +22,6 @@ export class CardService {
     return this.http.get<Card>(this.url + "getCard/" + id,{ headers: reqHeader });
   }
 
-  public getAuth(): Observable<any> {
-    var reqHeader = new HttpHeaders({ 
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + sessionStorage.getItem("token"),
-   });
-    return this.http.get<any>(this.url + "user/area/admin",{ headers: reqHeader });
-  }
 
 
 

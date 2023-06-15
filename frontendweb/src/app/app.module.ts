@@ -6,11 +6,9 @@ import { AppComponent } from './app.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
-import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { RolesComponent } from './pages/roles/roles.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AdminLayoutComponent } from './pages/admin-layout/admin-layout.component';
 import { UserLayoutComponent } from './pages/user-layout/user-layout.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,6 +19,7 @@ import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
 import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-crud.component';
 import { CardComponent } from './pages/card/card.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +27,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AddUserComponent,
     UserListComponent,
     UserDashboardComponent,
-    AdminDashboardComponent,
     RolesComponent,
     EmployeeComponent,
     LoginComponent,
-    AdminLayoutComponent,
     UserLayoutComponent,
     HomeLayoutComponent,
     VoidTableComponent,
@@ -40,7 +37,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     QuizAppComponent,
     StepperCrudComponent,
     CardComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,

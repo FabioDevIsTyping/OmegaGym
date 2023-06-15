@@ -94,7 +94,7 @@ public class CardController {
     }
 
     @GetMapping("/getCard/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('USER')")
     public Card getCard(@PathVariable long id) {
 
         return cardRepository.findByUser(userRepository.findById(id).get());
