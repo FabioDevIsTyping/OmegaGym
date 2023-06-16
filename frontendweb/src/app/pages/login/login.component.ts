@@ -36,9 +36,15 @@ export class LoginComponent implements OnInit {
     this.loginService.authenticate(this.username, this.password).subscribe({
       next: () => {
         this.loginService.showNavbar = true
-        this.router.navigate(['/card']).then(() => {
-          window.location.reload();
-        });
+        if(sessionStorage.getItem("role")=="ADMIN"){
+          this.router.navigate(['/admin-page']).then(() => {
+            window.location.reload();
+          });
+        }else if(sessionStorage.getItem("role")=="USER"){
+          this.router.navigate(['/card']).then(() => {
+            window.location.reload();
+          });
+        }
       }
     });
   }
