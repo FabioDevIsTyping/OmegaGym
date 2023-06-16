@@ -8,37 +8,51 @@ import { User } from '../class/user';
   styleUrls: ['./manage-client.component.css']
 })
 export class ManageClientComponent implements OnInit {
+  isAdmin: boolean = false;
+  clientList: User[] = [];
+  isDeleted: boolean = false;
+  filteredUserList: User[] = [];
+  searchText: string = '';
 
   constructor(private clientService: ClientService) { }
 
-  isAdmin:boolean=false
-  clientList:User[]=[]
-  isDeleted:boolean=false
-
-
   ngOnInit() {
-    if(sessionStorage.getItem("role")=='ADMIN'){
-      this.isAdmin=true
-      this.clientService.getAllUsers().subscribe(result=>{
-        this.clientList=result
-        console.log(this.clientList)
-      })
-  }}
-
-  deleteUser(id:number){
-    console.log(id)
-    this.clientService.deleteUser(id).subscribe(result=>{
-      this.isDeleted=result
-      console.log(this.isDeleted)
-      this.clientService.getAllUsers().subscribe(result=>{
-        this.clientList=result
-        console.log(this.clientList)
-      })
-  
-    })
-
-   
-    
+    if (sessionStorage.getItem("role") === 'ADMIN') {
+      this.isAdmin = true;
+      this.clientService.getAllUsers().subscribe((result: User[]) => {
+        this.clientList = result;
+        this.filteredUserList = result;
+        console.log(this.clientList);
+      });
+    }
   }
 
-}
+  deleteUser(id: number) {
+    console.log(id);
+    this.clientService.deleteUser(id).subscribe(result => {
+      this.isDeleted = result;
+      console.log(this.isDeleted);
+      this.clientService.getAllUsers().subscribe((result: User[]) => {
+        this.clientList = result;
+        this.filteredUserList = result;
+        console.log(this.clientList);
+      });
+    });
+  }
+
+  applyFilter() {
+    if (this.searchText.trim() === '') {
+      this.filteredUserList = this.clientList;
+    } else {
+      this.filteredUserList = this.clientList.filter(user => {
+        if (user.username && user.username.toLowerCase().startsWith(this.searchText.trim().toLowerCase())) {
+          return true;
+        }
+        return false;
+      });
+    }
+  }
+  
+  
+  
+  }
