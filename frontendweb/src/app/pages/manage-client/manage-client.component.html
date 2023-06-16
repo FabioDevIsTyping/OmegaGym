@@ -1,3 +1,10 @@
+<div class="table-description">
+  <h2 class="table-heading">Lista Utenti della Palestra</h2>
+  <p class="table-text">
+    Questa tabella rappresenta tutti gli utenti presenti nella palestra. Puoi utilizzare la casella di ricerca per filtrare gli utenti in base al loro username. Cliccando sul pulsante "Premi per eliminare", puoi cancellare un utente dalla piattaforma.
+  </p>
+</div>
+
 <div class="table-container">
   <input type="text" [(ngModel)]="searchText" (input)="applyFilter()" placeholder="Cerca per username" class="search-input">
   <table class="user-table">
