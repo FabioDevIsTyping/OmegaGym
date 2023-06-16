@@ -11,7 +11,9 @@ export class ManageCardsComponent implements OnInit {
 
   isAdmin: boolean = false;
   cardList: Card[] = [];
+  filteredCardList: Card[] = [];
   isDeleted: boolean = false;
+  searchText: string = '';
 
   constructor(private cardService: CardService) { }
 
@@ -20,7 +22,7 @@ export class ManageCardsComponent implements OnInit {
       this.isAdmin = true;
       this.cardService.getAllCards().subscribe((result: Card[]) => {
         this.cardList = result;
-        console.log(this.cardList);
+        this.filteredCardList = result;
       });
     }
   }
@@ -33,10 +35,22 @@ export class ManageCardsComponent implements OnInit {
         console.log(this.isDeleted);
         this.cardService.getAllCards().subscribe((result: Card[]) => {
           this.cardList = result;
-          console.log(this.cardList);
+          this.applyFilter();
         });
       });
     }
   }
-  
+
+  applyFilter() {
+    if (this.searchText.trim() === '') {
+      this.filteredCardList = this.cardList;
+    } else {
+      this.filteredCardList = this.cardList.filter(card => {
+        if (card.user && card.user.username && card.user.username.toLowerCase().startsWith(this.searchText.trim().toLowerCase())) {
+          return true;
+        }
+        return false;
+      });
+    }
+  }
 }
