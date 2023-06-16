@@ -49,14 +49,12 @@ public class CardController {
     public ResponseEntity<String> addCard(@RequestBody Card card) {
         try {
             // Verifica se l'utente ha già una carta attiva
-            // User user = card.getUser();
-            // // if (userHasActiveCard(user)) {
-            // // return ResponseEntity.badRequest().body("Failed to add card: User already
-            // has an active card.");
-            // // }
+            User user = card.getUser();
+            if (userHasActiveCard(user)) {
+            return ResponseEntity.badRequest().body("Failed to add card: User already has an active card.");
+            }
 
             card.setStartDate(LocalDate.now());
-            System.out.println("Before calculating endDate: " + card.getEndDate());
 
             if (card.getEndDate() == null && card.getSubscription() != null) {
                 // Fetch the subscription details from the repository
@@ -66,14 +64,11 @@ public class CardController {
                 if (subscription != null) {
                     // Calcola la data di fine in base alla durata dell'abbonamento
                     int duration = subscription.getDuration();
-                    System.out.println("Subscription duration: " + duration);
-
                     LocalDate endDate = card.getStartDate().plusMonths(duration);
                     card.setEndDate(endDate);
-                    System.out.println("After calculating endDate: " + card.getEndDate());
                 }
             }
-
+            card.setActive(true);
             cardRepository.save(card);
             return ResponseEntity.ok("Card added successfully!");
         } catch (Exception e) {
@@ -118,9 +113,9 @@ public class CardController {
         return cardRepository.findByUser(userRepository.findById(id).get());
     }
 
-    // private boolean userHasActiveCard(User user) {
-    // // Controlla se l'utente ha già una carta attiva nel sistema
-    // Card activeCard = cardRepository.findByUser(user);
-    // return activeCard != null;
-    // }
+    private boolean userHasActiveCard(User user) {
+    // Controlla se l'utente ha già una carta attiva nel sistema
+    Card activeCard = cardRepository.findByUser(user);
+    return activeCard != null;
+    }
 }
