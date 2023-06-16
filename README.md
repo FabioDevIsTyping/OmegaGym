@@ -5,7 +5,7 @@ Progetto realizzato individualmente per l'esame di Progettazione di Applicazioni
 Il progetto è una semplice applicazione per facilitare il management di una palestra.
 Difatti sarà possibile inserire una carta per il cliente che avrà dei parametri ben definiti come una data di inizio, una data di scadenza e la tipologia di abbonamento associato alla carta.
 Il cliente potrà accedere ad una propria area personale dove sarà possibile accedere alle informazioni riguardanti la propria carta e prendere visione del suo stato.
-Vi sarà inoltre una dashboard per l'amministratore della piattaforma dove potrà effettuare diverse operazioni.
+Vi sarà inoltre una dashboard per l'amministratore della piattaforma dove potrà effettuare diverse operazioni di management riguardanti i clienti della palestra che sono registrati e le carte associate ad essi. 
 
 ## Tecnologie utilizzate
 
