@@ -13,6 +13,7 @@ import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-cru
 import { CardComponent } from './pages/card/card.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ManageClientComponent } from './pages/manage-client/manage-client.component';
+import { ManageCardsComponent } from './pages/manage-cards/manage-cards.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
   {
     path: 'manage-client',
     component: ManageClientComponent
+
+  },
+  {
+    path: 'manage-cards',
+    component: ManageCardsComponent
 
   },
   {

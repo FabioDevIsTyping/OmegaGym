@@ -1,0 +1,27 @@
+<div class="table-container">
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Subscription</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>User</th>
+          <th>Operazione</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let card of cardList">
+          <td>{{ card.id }}</td>
+          <td>{{ card.subscription?.name }}</td>
+          <td>{{ card.startDate }}</td>
+          <td>{{ card.endDate }}</td>
+          <td>{{ card.user.username }}</td>
+          <td>
+            <button (click)="deleteCard(card.id)">Premi per eliminare.</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

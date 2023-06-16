@@ -13,6 +13,8 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private loginService: LoginService) { }
   
   showNavbar: boolean = true;
+  sessionStorage: Storage = sessionStorage;
+
 
   logout(){
     sessionStorage.removeItem("token")

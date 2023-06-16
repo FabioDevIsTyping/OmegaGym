@@ -15,6 +15,15 @@ export class CardService {
     this.url = 'http://localhost:8080/';
   }
 
+  public getAllCards(): Observable<Card[]>{
+    var reqHeader = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+   });
+   return this.http.get<Card[]>(this.url + "getCards",{ headers: reqHeader } )
+
+  }
+
   public getCardFromClient(id:number): Observable<Card> {
     var reqHeader = new HttpHeaders({ 
       'Content-Type': 'application/json',
@@ -29,6 +38,16 @@ export class CardService {
         'Authorization': 'Bearer ' + sessionStorage.getItem("token")
     });
     return this.http.post<Card>(this.url + "insertCard", card,{ headers: reqHeader })
+    }
+
+    public deleteCard(id:number){
+      var reqHeader = new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+     });
+     return this.http.delete<boolean>(this.url + "deleteCard" + "/" + id,{ headers: reqHeader } )
+  
+  
     }
 
 
