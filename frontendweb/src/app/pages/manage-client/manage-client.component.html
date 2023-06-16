@@ -10,16 +10,26 @@
   <table class="user-table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Operazione</th>
+        <th class="text-center" (click)="sortColumn('id')">
+          <i class="fas fa-id-card"></i> ID
+          <i class="fas fa-sort" [ngClass]="{'fa-sort-up': currentSortColumn === 'id' && sortDirection === 'asc', 'fa-sort-down': currentSortColumn === 'id' && sortDirection === 'desc'}"></i>
+        </th>
+        <th class="text-center" (click)="sortColumn('username')">
+          <i class="fas fa-user"></i> Username
+          <i class="fas fa-sort" [ngClass]="{'fa-sort-up': currentSortColumn === 'username' && sortDirection === 'asc', 'fa-sort-down': currentSortColumn === 'username' && sortDirection === 'desc'}"></i>
+        </th>
+        <th class="text-center">Operazione</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let user of clientList">
-        <td>{{ user.id }}</td>
-        <td>{{ user.username }}</td>
-        <td>
+        <td class="text-center">
+          <i class="fas fa-id-card"></i> {{ user.id }}
+        </td>
+        <td class="text-center">
+          <i class="fas fa-user"></i> {{ user.username }}
+        </td>
+        <td class="text-center">
           <button (click)="confirmDeleteUser(user)">Premi per eliminare</button>
         </td>
       </tr>

@@ -13,6 +13,8 @@ export class ManageClientComponent implements OnInit {
   isDeleted: boolean = false;
   filteredUserList: User[] = [];
   searchText: string = '';
+  currentSortColumn: string = '';
+  sortDirection: string = '';
 
   constructor(private clientService: ClientService) { }
 
@@ -59,8 +61,42 @@ export class ManageClientComponent implements OnInit {
       this.deleteUser(user.id);
     }
   }
-  
-  
-  
-  
+
+  sortColumn(column: string) {
+    if (column === this.currentSortColumn) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.currentSortColumn = column;
+      this.sortDirection = 'asc';
+    }
+
+    this.filteredUserList.sort((a, b) => {
+      const valueA = this.getPropertyValue(a, column);
+      const valueB = this.getPropertyValue(b, column);
+
+      if (valueA < valueB) {
+        return this.sortDirection === 'asc' ? -1 : 1;
+      } else if (valueA > valueB) {
+        return this.sortDirection === 'asc' ? 1 : -1;
+      } else {
+        return 0;
+      }
+    });
   }
+
+  getPropertyValue(obj: any, column: string): any {
+    const keys = column.split('.');
+    let value = obj;
+
+    for (const key of keys) {
+      if (value.hasOwnProperty(key)) {
+        value = value[key];
+      } else {
+        value = undefined;
+        break;
+      }
+    }
+
+    return value;
+  }
+}

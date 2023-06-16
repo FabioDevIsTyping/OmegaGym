@@ -32,11 +32,19 @@
     </thead>
     <tbody>
       <tr *ngFor="let card of filteredCardList">
-        <td>{{ card.id }}</td>
+        <td>
+          <i class="fas fa-id-card"></i> {{ card.id }}
+        </td>
         <td>{{ card.subscription?.name }}</td>
-        <td>{{ card.startDate }}</td>
-        <td>{{ card.endDate }}</td>
-        <td>{{ card.user.username }}</td>
+        <td>
+          <i class="far fa-calendar-alt"></i> {{ card.startDate }}
+        </td>
+        <td>
+          <i class="far fa-calendar-alt"></i> {{ card.endDate }}
+        </td>
+        <td>
+          <i class="fas fa-user"></i> {{ card.user.username }}
+        </td>
         <td>
           <button (click)="confirmDeleteCard(card)">
             <i class="fas fa-trash-alt"></i> Premi per eliminare
