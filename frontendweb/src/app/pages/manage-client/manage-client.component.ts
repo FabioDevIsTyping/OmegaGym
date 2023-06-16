@@ -13,6 +13,7 @@ export class ManageClientComponent implements OnInit {
 
   isAdmin:boolean=false
   clientList:User[]=[]
+  isDeleted:boolean=false
 
 
   ngOnInit() {
@@ -23,5 +24,21 @@ export class ManageClientComponent implements OnInit {
         console.log(this.clientList)
       })
   }}
+
+  deleteUser(id:number){
+    console.log(id)
+    this.clientService.deleteUser(id).subscribe(result=>{
+      this.isDeleted=result
+      console.log(this.isDeleted)
+      this.clientService.getAllUsers().subscribe(result=>{
+        this.clientList=result
+        console.log(this.clientList)
+      })
+  
+    })
+
+   
+    
+  }
 
 }

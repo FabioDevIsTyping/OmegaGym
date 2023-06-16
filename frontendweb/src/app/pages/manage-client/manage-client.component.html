@@ -3,17 +3,16 @@
       <tr>
         <th>ID</th>
         <th>Username</th>
-        <th>Password</th>
+        <th>Operazione</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of clientList">
-        <ng-container *ngIf="user.role === 'USER'">
-          <td>{{ user.id }}</td>
-          <td>{{ user.username }}</td>
-          <td>{{ user.password }}</td>
-        </ng-container>
-      </tr>
+        <tr *ngFor="let x of clientList">
+            <td>{{x.id}}</td>
+            <td>{{x.username}}</td>
+            <td><button (click)="deleteUser(x.id)">Premi per eliminare.</button></td>
+        </tr>
+            
     </tbody>
   </table>
   

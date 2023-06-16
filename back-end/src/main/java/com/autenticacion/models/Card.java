@@ -2,6 +2,9 @@ package com.autenticacion.models;
 
 import java.time.LocalDate;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -25,6 +28,7 @@ public class Card {
     private LocalDate endDate;
 
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @OnDelete(action= OnDeleteAction.CASCADE)
     private User user;
 
     @Column(name = "Validità carta")

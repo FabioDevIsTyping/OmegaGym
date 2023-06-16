@@ -32,4 +32,14 @@ export class ClientService {
    });
    return this.http.get<User>(this.url + "user/getSingleUser" + "/" + username,{ headers: reqHeader } )
   }
+
+  public deleteUser(id:number){
+    var reqHeader = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+   });
+   return this.http.delete<boolean>(this.url + "user/deleteUser" + "/" + id,{ headers: reqHeader } )
+
+
+  }
 }

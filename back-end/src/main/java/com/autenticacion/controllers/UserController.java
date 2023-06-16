@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.autenticacion.dto.UserDTO;
 import com.autenticacion.dto.UserLoginDTO;
+import com.autenticacion.models.Card;
 import com.autenticacion.models.User;
+import com.autenticacion.repositories.CardRepository;
 import com.autenticacion.repositories.UserRepository;
 import com.autenticacion.services.UserService;
 import jakarta.validation.Valid;
@@ -31,6 +34,8 @@ public class UserController {
 	private UserService usuarioService;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private CardRepository cardRepository;
 
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@Valid @RequestBody UserLoginDTO usuarioLogin, BindingResult bindingResult) {
@@ -92,6 +97,17 @@ public class UserController {
 	public User getSingleUser(@PathVariable String username) {
 		return userRepository.findByUsername(username);
 	}
+
+	@DeleteMapping("/deleteUser/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public boolean deleteUser(@PathVariable long id) {
+		    Card card = cardRepository.findByUser(userRepository.findById(id).get());
+			cardRepository.delete(card);
+            userRepository.deleteById(id);
+            return true;
+    }
+
+	
 
 
 }
