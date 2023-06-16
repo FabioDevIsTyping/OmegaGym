@@ -56,12 +56,15 @@ export class AdminPageComponent implements OnInit {
         this.subscription=result
         console.log(this.subscription)
         console.log(this.selectedSubscription)
-        this.card.user=this.user
+        this.card.user = new User
+        this.card.user.id = this.user.id
         this.card.subscription=this.subscription
-        this.cardService.insertCard(this.card).subscribe()
+        console.log(this.card)
+        this.cardService.insertCard(this.card).subscribe().add(
+          alert("carta inserita con successo!")
+        )
       })
     })
-
 
 
 

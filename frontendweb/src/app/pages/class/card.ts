@@ -6,6 +6,6 @@ export class Card {
     subscription?:Subscription
     startDate?:Date
     endDate?:Date
-    user?:User
+    user!:User
     
 }

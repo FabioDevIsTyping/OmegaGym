@@ -23,13 +23,13 @@ export class CardService {
     return this.http.get<Card>(this.url + "getCard/" + id,{ headers: reqHeader });
   }
 
-  public insertCard(card:Card){
-    var reqHeader = new HttpHeaders({ 
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + sessionStorage.getItem("token")
-   });
-   return this.http.post<Card>(this.url + "insertCard", card,{ headers: reqHeader })
-  }
+    public insertCard(card:Card){
+      var reqHeader = new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+    });
+    return this.http.post<Card>(this.url + "insertCard", card,{ headers: reqHeader })
+    }
 
 
 
