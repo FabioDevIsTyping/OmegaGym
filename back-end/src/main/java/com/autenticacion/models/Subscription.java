@@ -59,23 +59,7 @@ public class Subscription {
         this.name = name;
     }
 
-    /**
-     * Retrieves the duration of the subscription associated with this card.
-     *
-     * @return the duration of the subscription in months.
-     */
-    public int getDurata() {
-        return duration;
-    }
 
-    /**
-     * Sets the duration of the subscription associated with this card.
-     *
-     * @param durata the duration of the subscription to set in months.
-     */
-    public void setDurata(int durata) {
-        this.duration = durata;
-    }
 
     /**
      * Retrieves the price of the subscription.

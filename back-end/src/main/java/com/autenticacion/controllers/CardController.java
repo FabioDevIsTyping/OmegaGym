@@ -10,8 +10,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.autenticacion.models.Card;
+import com.autenticacion.models.Subscription;
 import com.autenticacion.models.User;
 import com.autenticacion.repositories.CardRepository;
+import com.autenticacion.repositories.SubscriptionRepository;
 import com.autenticacion.repositories.UserRepository;
 
 @RestController
@@ -22,6 +24,8 @@ public class CardController {
     private CardRepository cardRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private SubscriptionRepository subscriptionRepository;
 
     /**
      * Retrieves a list of all cards.
@@ -47,14 +51,28 @@ public class CardController {
             // Verifica se l'utente ha già una carta attiva
             // User user = card.getUser();
             // // if (userHasActiveCard(user)) {
-            // //     return ResponseEntity.badRequest().body("Failed to add card: User already has an active card.");
+            // // return ResponseEntity.badRequest().body("Failed to add card: User already
+            // has an active card.");
             // // }
 
             card.setStartDate(LocalDate.now());
+            System.out.println("Before calculating endDate: " + card.getEndDate());
 
-            // Calcola la data di fine in base alla durata dell'abbonamento
-            LocalDate endDate = card.getStartDate().plusMonths(card.getSubscription().getDuration());
-            card.setEndDate(endDate);
+            if (card.getEndDate() == null && card.getSubscription() != null) {
+                // Fetch the subscription details from the repository
+                int subscriptionId = card.getSubscription().getId();
+                Subscription subscription = subscriptionRepository.findById(subscriptionId).orElse(null);
+
+                if (subscription != null) {
+                    // Calcola la data di fine in base alla durata dell'abbonamento
+                    int duration = subscription.getDuration();
+                    System.out.println("Subscription duration: " + duration);
+
+                    LocalDate endDate = card.getStartDate().plusMonths(duration);
+                    card.setEndDate(endDate);
+                    System.out.println("After calculating endDate: " + card.getEndDate());
+                }
+            }
 
             cardRepository.save(card);
             return ResponseEntity.ok("Card added successfully!");
@@ -100,9 +118,9 @@ public class CardController {
         return cardRepository.findByUser(userRepository.findById(id).get());
     }
 
-    private boolean userHasActiveCard(User user) {
-        // Controlla se l'utente ha già una carta attiva nel sistema
-        Card activeCard = cardRepository.findByUser(user);
-        return activeCard != null;
-    }
+    // private boolean userHasActiveCard(User user) {
+    // // Controlla se l'utente ha già una carta attiva nel sistema
+    // Card activeCard = cardRepository.findByUser(user);
+    // return activeCard != null;
+    // }
 }
