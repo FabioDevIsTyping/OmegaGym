@@ -52,6 +52,13 @@ export class ManageClientComponent implements OnInit {
       });
     }
   }
+
+  confirmDeleteUser(user: User) {
+    const confirmationMessage = `Are you sure you want to delete ${user.username}?`;
+    if (confirm(confirmationMessage)) {
+      this.deleteUser(user.id);
+    }
+  }
   
   
   

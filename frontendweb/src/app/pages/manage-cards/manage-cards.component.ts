@@ -53,4 +53,11 @@ export class ManageCardsComponent implements OnInit {
       });
     }
   }
+
+  confirmDeleteCard(card: Card) {
+  const confirmationMessage = `Are you sure you want to eliminate ${card.user.username}'s card?`;
+  if (confirm(confirmationMessage)) {
+    this.deleteCard(card.id);
+  }
+}
 }
