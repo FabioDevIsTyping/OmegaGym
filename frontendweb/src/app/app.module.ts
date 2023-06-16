@@ -22,6 +22,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ManageClientComponent } from './pages/manage-client/manage-client.component';
 import { ManageCardsComponent } from './pages/manage-cards/manage-cards.component';
+import { ManageSubscriptionsComponent } from './manage-subscriptions/manage-subscriptions.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ManageCardsComponent } from './pages/manage-cards/manage-cards.componen
     NavbarComponent,
     AdminPageComponent,
     ManageClientComponent,
-    ManageCardsComponent
+    ManageCardsComponent,
+    ManageSubscriptionsComponent
   ],
   imports: [
     BrowserModule,

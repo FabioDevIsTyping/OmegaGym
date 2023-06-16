@@ -1,0 +1,43 @@
+.navbar {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .navbar-brand-text {
+    font-size: 24px;
+    margin-left: 10px;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 18px;
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .nav-item.active .nav-link {
+    color: #ffffff;
+  }
+  
+  .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  .dropdown-menu {
+    background-color: #343a40;
+  }
+  
+  .dropdown-item {
+    color: #ffffff;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #343a40;
+    color: #ffffff;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    filter: brightness(1.2);
+  }
+  
+    

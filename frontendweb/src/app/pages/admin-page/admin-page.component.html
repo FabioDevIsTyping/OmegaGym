@@ -1,17 +1,20 @@
 <div class="user-details" *ngIf="isAdmin">
-  <h1 class="heading">Dati Utente</h1>
-  <select class="subscription-select"  [(ngModel)]="selectedSubscription">
+  <h1 class="heading">Seleziona Abbonamento</h1>
+  <select class="subscription-select" [(ngModel)]="selectedSubscription">
     <option *ngFor="let element of subscriptionList" [value]="element.id">
       {{ element.name }}
     </option>
   </select>
   <p>
-    <strong>ID Utente:</strong>
+    <span class="label-bold">Seleziona Cliente:</span>
     <select class="subscription-select" [(ngModel)]="username">
       <option *ngFor="let element of clientList" [value]="element.username">
         {{ element.username }}
       </option>
     </select>
-  </p>    
-  <button class="submit-button" (click)="submitData()">Invia</button>
+  </p>
+  <p class="cta-text">Clicca per inserire una carta</p>
+  <div class="submit-container">
+    <button class="submit-button" (click)="submitData()">Invia</button>
+  </div>
 </div>

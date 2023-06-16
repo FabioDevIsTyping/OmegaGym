@@ -1,82 +1,49 @@
 .user-details {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .heading {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .subscription-select {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .input-date,
-  .input-number {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .input-date::-webkit-inner-spin-button,
-  .input-date::-webkit-outer-spin-button,
-  .input-number::-webkit-inner-spin-button,
-  .input-number::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  
-  .input-date[type="date"]::-webkit-calendar-picker-indicator {
-    color: #999;
-    opacity: 0.7;
-    cursor: pointer;
-  }
-  
-  .input-date[type="date"]::-webkit-datetime-edit {
-    padding: 0.4em;
-  }
-  
-  .input-date[type="date"]::-webkit-datetime-edit-fields-wrapper {
-    display: flex;
-    gap: 4px;
-  }
-  
-  .input-date[type="date"]::-webkit-datetime-edit-text,
-  .input-date[type="date"]::-webkit-datetime-edit-month-field,
-  .input-date[type="date"]::-webkit-datetime-edit-day-field,
-  .input-date[type="date"]::-webkit-datetime-edit-year-field {
-    padding: 0;
-    border: none;
-    border-radius: 4px;
-    background-color: #fff;
-  }
-  
-  .input-date[type="date"]::-webkit-inner-spin-button {
-    display: none;
-  }
-  
-  .input-date[type="date"]::-webkit-clear-button {
-    display: none;
-  }
-  
-  .submit-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .submit-button:hover {
-    background-color: #45a049;
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.label-bold {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.subscription-select {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.cta-text {
+  text-align: center;
+  font-size: 16px;
+  color: #777;
+  margin-top: 10px;
+}
+
+.submit-container {
+  text-align: center;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
