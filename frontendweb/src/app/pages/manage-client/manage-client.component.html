@@ -1,0 +1,19 @@
+<table class="user-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of clientList">
+        <ng-container *ngIf="user.role === 'USER'">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.password }}</td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+  

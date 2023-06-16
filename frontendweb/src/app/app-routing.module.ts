@@ -12,6 +12,7 @@ import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
 import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-crud.component';
 import { CardComponent } from './pages/card/card.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { ManageClientComponent } from './pages/manage-client/manage-client.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: 'admin-page',
     component: AdminPageComponent
+
+  },
+  {
+    path: 'manage-client',
+    component: ManageClientComponent
 
   },
   {

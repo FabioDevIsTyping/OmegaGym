@@ -20,6 +20,7 @@ import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-cru
 import { CardComponent } from './pages/card/card.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { ManageClientComponent } from './pages/manage-client/manage-client.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
     StepperCrudComponent,
     CardComponent,
     NavbarComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    ManageClientComponent
   ],
   imports: [
     BrowserModule,
