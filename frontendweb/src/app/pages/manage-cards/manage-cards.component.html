@@ -10,12 +10,24 @@
   <table class="user-table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Subscription</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>User</th>
-        <th>Operazione</th>
+        <th (click)="sortColumn('id')">
+          <i class="fas fa-id-card"></i> ID
+          <i class="fas fa-sort" [ngClass]="{'fa-sort-up': currentSortColumn === 'id' && sortDirection === 'asc', 'fa-sort-down': currentSortColumn === 'id' && sortDirection === 'desc'}"></i>
+        </th>
+        <th><i class="fas fa-file-alt"></i> Subscription</th>
+        <th (click)="sortColumn('startDate')">
+          <i class="far fa-calendar-alt"></i> Start Date
+          <i class="fas fa-sort" [ngClass]="{'fa-sort-up': currentSortColumn === 'startDate' && sortDirection === 'asc', 'fa-sort-down': currentSortColumn === 'startDate' && sortDirection === 'desc'}"></i>
+        </th>
+        <th (click)="sortColumn('endDate')">
+          <i class="far fa-calendar-alt"></i> End Date
+          <i class="fas fa-sort" [ngClass]="{'fa-sort-up': currentSortColumn === 'endDate' && sortDirection === 'asc', 'fa-sort-down': currentSortColumn === 'endDate' && sortDirection === 'desc'}"></i>
+        </th>
+        <th (click)="sortColumn('user.username')">
+          <i class="fas fa-user"></i> User
+          <i class="fas fa-sort" [ngClass]="{'fa-sort-up': currentSortColumn === 'user.username' && sortDirection === 'asc', 'fa-sort-down': currentSortColumn === 'user.username' && sortDirection === 'desc'}"></i>
+        </th>
+        <th><i class="fas fa-trash-alt"></i> Operazione</th>
       </tr>
     </thead>
     <tbody>
@@ -26,7 +38,9 @@
         <td>{{ card.endDate }}</td>
         <td>{{ card.user.username }}</td>
         <td>
-          <button (click)="confirmDeleteCard(card)">Premi per eliminare</button>
+          <button (click)="confirmDeleteCard(card)">
+            <i class="fas fa-trash-alt"></i> Premi per eliminare
+          </button>
         </td>
       </tr>
     </tbody>
