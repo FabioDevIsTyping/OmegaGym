@@ -108,7 +108,7 @@ public class UserController {
 	}
 
 	@GetMapping("/getUsersCount")
-	@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('USER')")
 	public int getUsersCount() {
 		int count = 0;
 		List<User> userList = (List<User>) userRepository.findAll();

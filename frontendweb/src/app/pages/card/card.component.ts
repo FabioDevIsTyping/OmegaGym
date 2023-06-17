@@ -3,6 +3,7 @@ import { CardService } from '../services/card.service';
 import { Card } from '../class/card';
 import { Subscription } from '../class/subscription';
 import { ClientService } from '../services/client.service';
+import { User } from '../class/user';
 
 @Component({
   selector: 'app-card',
@@ -14,6 +15,7 @@ export class CardComponent implements OnInit {
   subscription: Subscription = new Subscription();
   isUser: boolean = false;
   usersCount: number = 1;
+  user: User = new User()
 
   constructor(
     private cardService: CardService,
@@ -32,6 +34,7 @@ export class CardComponent implements OnInit {
       .subscribe((result) => {
         console.log(result);
         this.card = result;
+        this.user = this.card.user
         this.subscription.name = result.subscription?.name;
       });
 

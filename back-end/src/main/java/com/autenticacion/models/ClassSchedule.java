@@ -1,7 +1,6 @@
 package com.autenticacion.models;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
 
@@ -17,10 +16,10 @@ public class ClassSchedule {
     private GymClass gymClass;
 
     @Column(name = "Data")
-    private LocalDate date;
+    private LocalDateTime startTime;
 
     @Column(name = "Ora")
-    private LocalTime time;
+    private LocalDateTime endTime;
 
     @Column(name = "Posti disponibili")
     private int availableSlots;
@@ -52,40 +51,22 @@ public class ClassSchedule {
         this.gymClass = gymClass;
     }
 
-    /**
-     * Retrieves the date of the class schedule.
-     *
-     * @return The date of the class schedule.
-     */
-    public LocalDate getDate() {
-        return date;
+ 
+
+    public LocalDateTime getStartTime() {
+        return startTime;
     }
 
-    /**
-     * Sets the date of the class schedule.
-     *
-     * @param date The date to set for the class schedule.
-     */
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
-    /**
-     * Retrieves the time of the class schedule.
-     *
-     * @return The time of the class schedule.
-     */
-    public LocalTime getTime() {
-        return time;
+    public LocalDateTime getEndTime() {
+        return endTime;
     }
 
-    /**
-     * Sets the time of the class schedule.
-     *
-     * @param time The time to set for the class schedule.
-     */
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     /**
