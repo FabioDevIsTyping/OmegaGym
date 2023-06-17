@@ -85,7 +85,7 @@ public class UserController {
 		List<User> filteredUserList = new ArrayList<>();
 
 		userList.forEach(user -> {
-			if (user.getRol().getId()==2) {
+			if (user.getRol().getId() == 2) {
 				filteredUserList.add(user);
 			}
 		});
@@ -99,15 +99,27 @@ public class UserController {
 	}
 
 	@DeleteMapping("/deleteUser/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public boolean deleteUser(@PathVariable long id) {
-		    Card card = cardRepository.findByUser(userRepository.findById(id).get());
-			cardRepository.delete(card);
-            userRepository.deleteById(id);
-            return true;
-    }
+	@PreAuthorize("hasAuthority('ADMIN')")
+	public boolean deleteUser(@PathVariable long id) {
+		Card card = cardRepository.findByUser(userRepository.findById(id).get());
+		cardRepository.delete(card);
+		userRepository.deleteById(id);
+		return true;
+	}
 
-	
+	@GetMapping("/getUsersCount")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	public int getUsersCount() {
+		int count = 0;
+		List<User> userList = (List<User>) userRepository.findAll();
 
+		for (User user : userList) {
+			if (user.getRol().getId() == 2) { // Assuming role ID 2 represents "USER" role
+				count++;
+			}
+		}
+
+		return count;
+	}
 
 }
