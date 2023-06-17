@@ -31,12 +31,11 @@ public class CardExpirationJob implements Job {
                     cardRepository.save(card);
                 } else {
                     card.setActive(false);
-                    cardRepository.save(card);
+                    cardRepository.delete(card); // Delete the expired card
                 }
             }
         } catch (Exception e) {
             throw new JobExecutionException("Failed to update expired cards: " + e.getMessage(), e);
         }
     }
-
 }
