@@ -1,11 +1,31 @@
 
 # Progettazione di Applicazioni Web e Mobili (6 CFU) - De Vitis
-
+![Logo](https://gymh24.it/wp-content/uploads/2023/05/cropped-logo.png)
 Progetto realizzato individualmente per l'esame di Progettazione di Applicazioni Web e Mobili presso l'università di Camerino. 
 Il progetto è una semplice applicazione per facilitare il management di una palestra.
 Difatti sarà possibile inserire una carta per il cliente che avrà dei parametri ben definiti come una data di inizio, una data di scadenza e la tipologia di abbonamento associato alla carta.
 Il cliente potrà accedere ad una propria area personale dove sarà possibile accedere alle informazioni riguardanti la propria carta e prendere visione del suo stato.
 Vi sarà inoltre una dashboard per l'amministratore della piattaforma dove potrà effettuare diverse operazioni di management riguardanti i clienti della palestra che sono registrati e le carte associate ad essi. 
+
+
+## FAQ
+
+#### Da cosa è nata l'idea per il progetto?
+
+In questi anni all'interno del territorio italiano stanno aumentando sempre di più le palestre aperte h24. Questa idea innovativa nata in america ha riscosso un forte successo. Difatti il principale vantaggio è il non doversi adattare agli orari della palestra ed avere la libertà di scegliere l'orario in cui andare ad allenarsi a seconda dei propri impegni. Proprio questo è il punto su cui traggono maggiore forza le palestre h24, ci ritroviamo infatti in una società sempre più dinamica dettata da ritmi molto frenetici a causa del lavoro o qualsiasi altro aspetto occupa la nostra vita personale e la possibilità di allenarsi a qualsiasi orario è vista come un pregio da molti. In italia soprattutto nelle grandi città sono state introdotte delle palestre h24 mentre in piccoli contesti questo passo avanti ancora non è stato fatto.
+
+#### Qual'è l'obiettivo del progetto?
+
+L'obiettivo del progetto è quello di fornire alle piccole palestre una facile soluzione per poter diventare delle palestre aperte h24.
+Attraverso l'introduzione di un applicazione che fornisce un metodo al proprietario della palestra per poter interagire e gestire i clienti che hanno diritto di accedere alla propria palestra e di customizzare i tipi di abbonamenti disponibili ai clienti. Inoltre l'applicazione è anche rivolta all'utente che potrà vedere lo stato attuale della propria carta e potrà effettuare molte altre operazioni che non sono state ancora implementate.
+
+#### Il progetto è finito?
+
+Assolutamente no, il progetto è in fase di sviluppo per il momento mi sono occupato del lato gestionale del database e ho introdotto le funzionalità principali ed un autenticazione attraverso la JWT Security. Tuttavia vi sono moltissime funzionalità che possono essere introdotte per favorire l'automazione di tutta l'attività.
+Come ad esempio l'adottamento di uno job scheduler che mantenga le informazioni sui job e sui trigger anche dopo il riavvio del programma o se si hanno più istanze dello scheduler in esecuzione in un cluster.
+Il tutto comporterebbe però un notevole investimento di tempo, denaro e richiederebbe conoscenze anche dal punto di vista hardware.
+Per il momento è stata quindi sviluppata una piccola parte di quello che sarebbe il progetto finale da poi inserire nel mercato.
+
 
 ## Tecnologie utilizzate
 
