@@ -37,7 +37,14 @@ export class SubscriptionService {
    });
    return this.http.delete<boolean>(this.url + "deleteSubscription" + "/" + id,{ headers: reqHeader } )
 
+  }
 
+  public insertSubscription(subscription:Subscription){
+    var reqHeader = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+  });
+  return this.http.post<Subscription>(this.url + "insertSubscription", subscription,{ headers: reqHeader })
   }
 
   

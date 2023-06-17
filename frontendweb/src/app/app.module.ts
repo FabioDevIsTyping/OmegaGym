@@ -23,6 +23,7 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ManageClientComponent } from './pages/manage-client/manage-client.component';
 import { ManageCardsComponent } from './pages/manage-cards/manage-cards.component';
 import { ManageSubscriptionsComponent } from './pages/manage-subscriptions/manage-subscriptions.component';
+import { AddSubscriptionComponent } from './pages/add-subscription/add-subscription.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ManageSubscriptionsComponent } from './pages/manage-subscriptions/manag
     AdminPageComponent,
     ManageClientComponent,
     ManageCardsComponent,
-    ManageSubscriptionsComponent
+    ManageSubscriptionsComponent,
+    AddSubscriptionComponent
   ],
   imports: [
     BrowserModule,
