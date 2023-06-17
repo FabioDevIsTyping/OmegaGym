@@ -1,6 +1,5 @@
 
 # Progettazione di Applicazioni Web e Mobili (6 CFU) - De Vitis
-![Logo](https://gymh24.it/wp-content/uploads/2023/05/cropped-logo.png)
 Progetto realizzato individualmente per l'esame di Progettazione di Applicazioni Web e Mobili presso l'università di Camerino. 
 Il progetto è una semplice applicazione per facilitare il management di una palestra.
 Difatti sarà possibile inserire una carta per il cliente che avrà dei parametri ben definiti come una data di inizio, una data di scadenza e la tipologia di abbonamento associato alla carta.
