@@ -1,53 +1,51 @@
-<nav *ngIf="isAdmin" class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" style="margin-right: 10px;">
-    <i class="fas fa-dumbbell" style="margin-right: 5px;"></i>
-    <span class="navbar-brand-text" style="margin-left: 5px;">Gym Management</span>
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/manage-client">
-          <i class="fa fa-user" style="margin-right: 5px;"></i>
-          Manage Clients
-        </a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/admin-page">
-          <i class="fa fa-credit-card" style="margin-right: 5px;"></i>
-          Insert Card
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/manage-cards">
-          <i class="fas fa-credit-card" style="margin-right: 5px;"></i>
-          Manage Cards
-        </a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/add-subscription">
-          <i class="fas fa-plus" style="margin-right: 5px;"></i>
-          Add Subscription
-        </a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/manage-subscriptions">
-          <i class="fa fa-wrench" style="margin-right: 5px;"></i>
-          Manage Subscriptions
-        </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" (click)="confirmLogout()">
-          <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i> 
-          Logout
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-    </ul>
+<nav *ngIf="isAdmin" class="navbar bg-dark navbar-expand-lg bg-body-tertiary border-bottom border-bottom-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/manage-client">
+            <i class="fa fa-user" style="margin-right: 5px;"></i>
+            Manage Clients
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/admin-page">
+            <i class="fa fa-credit-card" style="margin-right: 5px;"></i>
+            Insert Card
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/manage-cards">
+            <i class="fas fa-credit-card" style="margin-right: 5px;"></i>
+            Manage Cards
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/add-subscription">
+            <i class="fas fa-plus" style="margin-right: 5px;"></i>
+            Add Subscription
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/manage-subscriptions">
+            <i class="fa fa-wrench" style="margin-right: 5px;"></i>
+            Manage Subscriptions
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" (click)="confirmLogout()">
+            <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i> 
+            Logout
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 
@@ -55,7 +53,8 @@
 
 
 
-<nav *ngIf="isUser" class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+
+<nav *ngIf="isUser" class="navbar bg-dark navbar-expand-lg bg-body-tertiary border-bottom border-bottom-dark" data-bs-theme="dark">
   <a class="navbar-brand" style="margin-right: 10px;">
     <i class="fas fa-dumbbell" style="margin-right: 5px;"></i>
     <span class="navbar-brand-text" style="margin-left: 5px;">Gym Management</span>
