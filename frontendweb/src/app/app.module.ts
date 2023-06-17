@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { IonicModule } from '@ionic/angular'; // Import IonicModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,6 +51,7 @@ import { AddSubscriptionComponent } from './pages/add-subscription/add-subscript
   ],
   imports: [
     BrowserModule,
+    IonicModule.forRoot(), // Import IonicModule and call forRoot()
     AppRoutingModule,
     FormsModule,
     HttpClientModule

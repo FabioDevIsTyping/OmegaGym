@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "@fortawesome/fontawesome-free": "^6.4.0",
+    "@ionic/angular": "^7.0.14",
     "bootstrap": "^5.2.3",
     "jquery": "^3.7.0",
     "popper.js": "^1.16.1",
