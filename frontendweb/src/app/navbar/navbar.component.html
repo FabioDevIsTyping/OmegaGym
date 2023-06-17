@@ -9,27 +9,33 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/admin-page" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/manage-client">
+          <i class="fa fa-user" style="margin-right: 5px;"></i>
+          Manage Clients
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/admin-page">
           <i class="fa fa-credit-card" style="margin-right: 5px;"></i>
           Insert Card
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/manage-client" routerLinkActive="active">
-          <i class="fa fa-user" style="margin-right: 5px;"></i>
-          Manage Clients
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/manage-cards" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/manage-cards">
           <i class="fas fa-credit-card" style="margin-right: 5px;"></i>
           Manage Cards
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/manage-subscriptions" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/add-subscription">
+          <i class="fas fa-plus" style="margin-right: 5px;"></i>
+          Add Subscription
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/manage-subscriptions">
           <i class="fa fa-wrench" style="margin-right: 5px;"></i>
           Manage Subscriptions
         </a>
