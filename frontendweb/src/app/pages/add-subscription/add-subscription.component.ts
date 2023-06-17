@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubscriptionService } from '../services/subscription.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-subscription',
@@ -15,6 +16,7 @@ export class AddSubscriptionComponent implements OnInit {
   price: number = 0;
   duration: number = 1;
   description: string | undefined;
+  showErrorNotification: boolean = false;
 
   ngOnInit(): void {
     if (sessionStorage.getItem("role") === 'ADMIN') {
@@ -32,11 +34,18 @@ export class AddSubscriptionComponent implements OnInit {
     this.subscriptionService.insertSubscription(subscription).subscribe(
       (response) => {
         console.log('Abbonamento inserito con successo:', response);
-        // Esegui altre azioni o resetta i campi del modulo
+        // Execute other actions or reset the form fields
       },
       (error) => {
-        console.error('Errore durante l\'inserimento dell\'abbonamento:', error);
-        // Gestisci l'errore in modo appropriato
+        if (error instanceof HttpErrorResponse && error.status === 401) {
+          // Show the notification for 401 error
+          this.showErrorNotification = true;
+
+          // Hide the error notification after 1 second
+          setTimeout(() => {
+            this.showErrorNotification = false;
+          }, 1000);
+        }
       }
     );
   }

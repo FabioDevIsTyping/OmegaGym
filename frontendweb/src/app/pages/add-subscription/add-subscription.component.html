@@ -1,23 +1,26 @@
 <div *ngIf="isAdmin" class="subscription-form">
-    <h2>Add Subscription</h2>
-    <form>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" [(ngModel)]="name" name="name" placeholder="Inserisci il nome dell'abbonamento">
-      </div>
-      <div class="form-group">
-        <label for="duration">Duration</label>
-        <input type="number" class="form-control" [(ngModel)]="duration" name="duration" placeholder="Inserisci la durata">
-      </div>
-      <div class="form-group">
-        <label for="price">Price</label>
-        <input type="number" class="form-control" [(ngModel)]="price" name="price" placeholder="Inserisci il prezzo">
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" [(ngModel)]="description" name="description" placeholder="Inserisci la descrizione"></textarea>
-      </div>
-      <button class="btn btn-primary" (click)="addSubscription()"><i class="fas fa-plus"></i> Add</button>
-    </form>
-  </div>
-  
+  <h2>Add Subscription</h2>
+  <form>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" [(ngModel)]="name" name="name" placeholder="Inserisci il nome dell'abbonamento">
+    </div>
+    <div class="form-group">
+      <label for="duration">Duration</label>
+      <input type="number" class="form-control" [(ngModel)]="duration" name="duration" placeholder="Inserisci la durata">
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" class="form-control" [(ngModel)]="price" name="price" placeholder="Inserisci il prezzo">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" [(ngModel)]="description" name="description" placeholder="Inserisci la descrizione"></textarea>
+    </div>
+    <button class="btn btn-primary" (click)="addSubscription()"><i class="fas fa-plus"></i> Add</button>
+  </form>
+</div>
+
+<div *ngIf="showErrorNotification" class="notification">
+  <p>The fields are not correct. Please check your input.</p>
+</div>
