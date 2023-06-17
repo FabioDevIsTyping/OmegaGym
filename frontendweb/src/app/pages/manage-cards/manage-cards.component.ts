@@ -31,13 +31,13 @@ export class ManageCardsComponent implements OnInit {
 
   deleteCard(id: number | undefined) {
     if (id !== undefined) {
-      console.log(id);
+      console.log(id)
       this.cardService.deleteCard(id).subscribe(result => {
-        this.isDeleted = result;
-        console.log(this.isDeleted);
+        this.isDeleted = result
+        console.log(this.isDeleted)
         this.cardService.getAllCards().subscribe((result: Card[]) => {
-          this.cardList = result;
-          this.applyFilter();
+          this.cardList = result
+          this.applyFilter()
         });
       });
     }

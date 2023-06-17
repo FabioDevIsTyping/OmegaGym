@@ -30,5 +30,15 @@ export class SubscriptionService {
    return this.http.get<Subscription>(this.url + "getSingleSubscription/" + id,{ headers: reqHeader } )
   }
 
+  public deleteSubscription(id:number){
+    var reqHeader = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+   });
+   return this.http.delete<boolean>(this.url + "deleteSubscription" + "/" + id,{ headers: reqHeader } )
+
+
+  }
+
   
 }

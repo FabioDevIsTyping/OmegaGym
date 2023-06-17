@@ -14,6 +14,7 @@ import { CardComponent } from './pages/card/card.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ManageClientComponent } from './pages/manage-client/manage-client.component';
 import { ManageCardsComponent } from './pages/manage-cards/manage-cards.component';
+import { ManageSubscriptionsComponent } from './pages/manage-subscriptions/manage-subscriptions.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'manage-client',
     component: ManageClientComponent
+
+  },
+  {
+    path: 'manage-subscriptions',
+    component: ManageSubscriptionsComponent
 
   },
   {

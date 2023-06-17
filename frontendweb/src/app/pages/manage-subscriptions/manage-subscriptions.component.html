@@ -1,1 +1,61 @@
-<p>manage-subscriptions works!</p>
+<div class="table-description">
+  <h2 class="table-heading">Lista Abbonamenti della Palestra</h2>
+  <p class="table-text">
+    Questa tabella rappresenta tutti gli abbonamenti presenti nella palestra. Puoi utilizzare la casella di ricerca per filtrare gli abbonamenti in base al loro nome. Cliccando sul pulsante "Premi per eliminare", puoi cancellare un abbonamento dalla piattaforma.
+  </p>
+</div>
+
+<div class="table-container">
+  <div class="search-container">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" [(ngModel)]="searchText" (input)="applyFilter()" placeholder="Cerca per nome" class="search-input">
+  </div>
+  <table class="subscription-table">
+    <thead>
+      <tr>
+        <th class="text-center" (click)="sortColumn('id')">
+          <i class="fas fa-id-card"></i> ID
+          <i class="fas fa-sort" [ngClass]="{'fa-sort-up': currentSortColumn === 'id' && sortDirection === 'asc', 'fa-sort-down': currentSortColumn === 'id' && sortDirection === 'desc'}"></i>
+        </th>
+        <th class="text-center" (click)="sortColumn('name')">
+          <i class="fas fa-user"></i> Nome
+          <i class="fas fa-sort" [ngClass]="{'fa-sort-up': currentSortColumn === 'name' && sortDirection === 'asc', 'fa-sort-down': currentSortColumn === 'name' && sortDirection === 'desc'}"></i>
+        </th>
+        <th class="text-center">
+          <i class="fas fa-clock"></i> Durata
+        </th>
+        <th class="text-center">
+          <i class="fas fa-dollar-sign"></i> Prezzo
+        </th>
+        <th class="text-center">
+          <i class="fas fa-align-left"></i> Descrizione
+        </th>
+        <th class="text-center">Operazione</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subscription of subscriptionList">
+        <td class="text-center">
+          <i class="fas fa-id-card"></i> {{ subscription.id }}
+        </td>
+        <td class="text-center">
+          <i class="fas fa-user"></i> {{ subscription.name }}
+        </td>
+        <td class="text-center">
+          <i class="fas fa-clock"></i> {{ subscription.duration }} mesi
+        </td>
+        <td class="text-center">
+          <i class="fas fa-dollar-sign"></i> {{ subscription.price }}
+        </td>
+        <td class="text-center">
+          <i class="fas fa-align-left"></i> {{ subscription.descrizione }}
+        </td>
+        <td class="text-center">
+          <button class="delete-button" (click)="confirmDeleteSubscription(subscription)">
+            <i class="fas fa-trash-alt"></i> Premi per eliminare
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

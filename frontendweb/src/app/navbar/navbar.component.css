@@ -4,7 +4,7 @@
   
   .navbar-brand-text {
     font-size: 24px;
-    margin-left: 10px;
+    margin-left: 40px;
   }
   
   .navbar-nav .nav-link {
@@ -38,6 +38,14 @@
   .nav-link:hover,
   .nav-link.active {
     filter: brightness(1.2);
+  }
+
+  .navbar-brand {
+    margin-right: 10px;
+  }
+  
+  .nav-link i {
+    margin-right: 5px;
   }
   
     

@@ -1,7 +1,7 @@
 <nav *ngIf="showNavbar" class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand">
-    <i class="fas fa-dumbbell"></i>
-    <span class="navbar-brand-text">Gym Management</span>
+  <a class="navbar-brand" style="margin-right: 10px;">
+    <i class="fas fa-dumbbell" style="margin-right: 5px;"></i>
+    <span class="navbar-brand-text" style="margin-left: 5px;">Gym Management</span>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,40 +11,32 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/admin-page" routerLinkActive="active">
-          <i class="fa fa-credit-card"></i> <!-- Changed the icon to a card icon -->
+          <i class="fa fa-credit-card" style="margin-right: 5px;"></i>
           Insert Card
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/manage-client" routerLinkActive="active">
-          <i class="fa fa-user"></i>
+          <i class="fa fa-user" style="margin-right: 5px;"></i>
           Manage Clients
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/manage-cards" routerLinkActive="active">
-          <i class="fas fa-credit-card"></i>
+          <i class="fas fa-credit-card" style="margin-right: 5px;"></i>
           Manage Cards
         </a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-envelope-o">
-            <span class="badge badge-primary">11</span>
-          </i>
-          Dropdown
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/manage-subscriptions" routerLinkActive="active">
+          <i class="fa fa-wrench" style="margin-right: 5px;"></i>
+          Manage Subscriptions
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item">Action</a>
-          <a class="dropdown-item">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item">Something else here</a>
-        </div>
       </li>
       <li class="nav-item active">
         <a class="nav-link" (click)="confirmLogout()">
-          <i class="fas fa-sign-out-alt"></i> 
+          <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i> 
           Logout
           <span class="sr-only">(current)</span>
         </a>

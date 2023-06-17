@@ -47,7 +47,7 @@ public class SubscriptionController {
      * @param id the ID of the subscription to delete.
      * @return true if the subscription was deleted successfully, false otherwise.
      */
-    @DeleteMapping("/deleteSubscriptions/{id}")
+    @DeleteMapping("/deleteSubscription/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public boolean deleteSubscription(@PathVariable int id) {
         if (subscriptionRepository.existsById(id)) {
