@@ -51,10 +51,18 @@ export class ManageSubscriptionsComponent implements OnInit {
   }
 
   applyFilter() {
-    this.filteredSubscriptionList = this.subscriptionList.filter((subscription: Subscription) => {
-      return subscription.name?.toLowerCase().includes(this.searchText.toLowerCase());
-    });
+    if (this.searchText.trim() === '') {
+      this.filteredSubscriptionList = this.subscriptionList;
+      console.log(this.filteredSubscriptionList);
+    } else {
+      this.filteredSubscriptionList = this.subscriptionList.filter((subscription: Subscription) => {
+        return subscription.name?.toLowerCase().startsWith(this.searchText.trim().toLowerCase());
+      });
+      console.log(this.filteredSubscriptionList);
+    }
   }
+  
+    
   
 
   sortColumn(column: string) {
@@ -65,7 +73,5 @@ export class ManageSubscriptionsComponent implements OnInit {
       this.sortDirection = 'asc';
     }
 
-    // Implement sorting logic based on this.currentSortColumn and this.sortDirection
-    // Update this.filteredSubscriptionList with sorted data
   }
 }
