@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, tap } from 'rxjs';
 import { Card } from '../class/card';
 import { Subscription } from '../class/subscription';
 
@@ -37,7 +37,7 @@ export class CardService {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + sessionStorage.getItem("token")
     });
-    return this.http.post<Card>(this.url + "insertCard", card,{ headers: reqHeader })
+    return this.http.post<HttpErrorResponse>(this.url + "insertCard", card,{ headers: reqHeader})
     }
 
     public deleteCard(id:number){
@@ -49,10 +49,5 @@ export class CardService {
   
   
     }
-
-
-
-
-
 
 }

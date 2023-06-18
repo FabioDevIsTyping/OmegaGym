@@ -47,6 +47,8 @@ export class AddSubscriptionComponent implements OnInit {
           }, 1000);
         }
       }
-    );
+    ).add(()=>{
+      alert("Aggiunto abbonamento con successo")
+    });
   }
 }

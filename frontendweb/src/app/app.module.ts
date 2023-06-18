@@ -45,7 +45,7 @@ import { AddSubscriptionComponent } from './pages/add-subscription/add-subscript
     ManageClientComponent,
     ManageCardsComponent,
     ManageSubscriptionsComponent,
-    AddSubscriptionComponent
+    AddSubscriptionComponent,
   ],
   imports: [
     BrowserModule,

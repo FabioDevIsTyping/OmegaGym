@@ -5,6 +5,7 @@ import { SubscriptionService } from '../services/subscription.service';
 import { ClientService } from '../services/client.service';
 import { User } from '../class/user';
 import { Card } from '../class/card';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-page',
@@ -49,28 +50,39 @@ export class AdminPageComponent implements OnInit {
   }
 
   submitData() {
-    this.clientService.getUser(this.username).subscribe(result=>{
-      this.user=result
-      console.log(this.user)
-      this.subscriptionService.getSubscription(this.selectedSubscription).subscribe(result=>{
-        this.subscription=result
-        console.log(this.subscription)
-        console.log(this.selectedSubscription)
-        this.card.user = new User
-        this.card.user.id = this.user.id
-        this.card.subscription=this.subscription
-        console.log(this.card)
-        this.cardService.insertCard(this.card).subscribe().add(
-          alert("carta inserita con successo!")
+    this.clientService.getUser(this.username).subscribe(result => {
+      this.user = result;
+      console.log(this.user);
+      this.subscriptionService.getSubscription(this.selectedSubscription).subscribe(result => {
+        this.subscription = result;
+        console.log(this.subscription);
+        console.log(this.selectedSubscription);
+        this.card.user = new User();
+        this.card.user.id = this.user.id;
+        this.card.subscription = this.subscription;
+        console.log(this.card);
+        this.cardService.insertCard(this.card).subscribe(
+          response => {
+            if (response instanceof HttpErrorResponse && response.status === 200){
+
+              console.log(response)
+
+            }
+
+          }
         )
-      })
-    })
+      });
+    });
+  
+  }
+  
+  
+  
 
 
 
 
     
-    // Aggiungi qui la logica per inviare i dati al server o effettuare altre operazioni necessarie
-  }
+  
   
 }
