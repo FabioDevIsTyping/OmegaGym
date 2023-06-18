@@ -6,7 +6,10 @@
 </div>
 
 <div class="table-container">
-  <input type="text" [(ngModel)]="searchText" (input)="applyFilter()" placeholder="Cerca per username" class="search-input">
+  <div class="search-container">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" [(ngModel)]="searchText" (input)="applyFilter()" placeholder="Cerca per username" class="search-input">
+  </div>
   <table class="user-table">
     <thead>
       <tr>
@@ -22,7 +25,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of clientList">
+      <tr *ngFor="let user of filteredUserList">
         <td class="text-center">
           <i class="fas fa-id-card"></i> {{ user.id }}
         </td>
