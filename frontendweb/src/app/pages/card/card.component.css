@@ -176,3 +176,81 @@ html, body {
   font-size: 0.9em;
 }
 
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 300px;
+    height: 180px;
+  }
+
+  .card h1 {
+    font-size: 18px;
+  }
+
+  .card .additional {
+    width: 100px;
+  }
+
+  .card .additional .user-card {
+    width: 100px;
+  }
+
+  .card .additional .user-card::after {
+    top: 5%;
+    right: -1px;
+    height: 90%;
+  }
+
+  .card .additional .user-card .level,
+  .card .additional .user-card .points {
+    top: 10%;
+    font-size: 0.5em;
+    padding: 0.125rem 0.5rem;
+  }
+
+  .card .additional .user-card .points {
+    top: 90%;
+  }
+
+  .card .additional .more-info {
+    width: 200px;
+    left: 100px;
+  }
+
+  .card .additional .more-info h1 {
+    font-size: 14px;
+  }
+
+  .card .additional .coords {
+    margin: 0 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .card .additional .stats {
+    font-size: 1.5rem;
+    bottom: 0.5rem;
+  }
+
+  .card .additional .stats > div.title {
+    font-size: 0.5rem;
+  }
+
+  .card .additional .stats div.value {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+
+  .card .additional .stats div.value.infinity {
+    font-size: 1.5rem;
+  }
+
+  .card .general {
+    width: 200px;
+    padding: 0.5rem;
+  }
+
+  .card .general .more {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.7em;
+  }
+}
