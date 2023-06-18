@@ -51,20 +51,38 @@ public class ClassSchedule {
         this.gymClass = gymClass;
     }
 
- 
-
+    /**
+     * Retrieves the start time of the class schedule.
+     *
+     * @return The start time of the class schedule.
+     */
     public LocalDateTime getStartTime() {
         return startTime;
     }
 
+    /**
+     * Sets the start time of the class schedule.
+     *
+     * @param startTime The start time to set.
+     */
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
+    /**
+     * Retrieves the end time of the class schedule.
+     *
+     * @return The end time of the class schedule.
+     */
     public LocalDateTime getEndTime() {
         return endTime;
     }
 
+    /**
+     * Sets the end time of the class schedule.
+     *
+     * @param endTime The end time to set.
+     */
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
@@ -86,6 +104,4 @@ public class ClassSchedule {
     public void setAvailableSlots(int availableSlots) {
         this.availableSlots = availableSlots;
     }
-
-
 }

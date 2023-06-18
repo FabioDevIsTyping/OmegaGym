@@ -48,10 +48,10 @@ public class CardController {
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> addCard(@RequestBody Card card) {
         try {
-            // Verifica se l'utente ha già una carta attiva
+            // Check if the user already has an active card
             User user = card.getUser();
             if (userHasActiveCard(user)) {
-            return ResponseEntity.badRequest().body("Failed to add card: User already has an active card.");
+                return ResponseEntity.badRequest().body("Failed to add card: User already has an active card.");
             }
 
             card.setStartDate(LocalDate.now());
@@ -62,7 +62,7 @@ public class CardController {
                 Subscription subscription = subscriptionRepository.findById(subscriptionId).orElse(null);
 
                 if (subscription != null) {
-                    // Calcola la data di fine in base alla durata dell'abbonamento
+                    // Calculate the end date based on the subscription duration
                     int duration = subscription.getDuration();
                     LocalDate endDate = card.getStartDate().plusMonths(duration);
                     card.setEndDate(endDate);
@@ -106,16 +106,27 @@ public class CardController {
         return true;
     }
 
+    /**
+     * Retrieves the card for the specified user ID.
+     *
+     * @param id the ID of the user.
+     * @return the card associated with the user.
+     */
     @GetMapping("/getCard/{id}")
     @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     public Card getCard(@PathVariable long id) {
-
         return cardRepository.findByUser(userRepository.findById(id).get());
     }
 
+    /**
+     * Checks if the user has an active card.
+     *
+     * @param user the user to check.
+     * @return true if the user has an active card, false otherwise.
+     */
     private boolean userHasActiveCard(User user) {
-    // Controlla se l'utente ha già una carta attiva nel sistema
-    Card activeCard = cardRepository.findByUser(user);
-    return activeCard != null;
+        // Check if the user has an active card in the system
+        Card activeCard = cardRepository.findByUser(user);
+        return activeCard != null;
     }
 }

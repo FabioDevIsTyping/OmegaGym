@@ -31,11 +31,10 @@ public class Subscription {
     @NotNull(message = "La descrizione dell'abbonamento non può essere null!")
     private String descrizione;
 
-
     /**
      * Retrieves the ID of the subscription.
      *
-     * @return The subscription ID.
+     * @return The ID of the subscription.
      */
     public int getId() {
         return id;
@@ -44,7 +43,7 @@ public class Subscription {
     /**
      * Retrieves the name of the subscription.
      *
-     * @return The subscription name.
+     * @return The name of the subscription.
      */
     public String getName() {
         return name;
@@ -53,18 +52,34 @@ public class Subscription {
     /**
      * Sets the name of the subscription.
      *
-     * @param name The subscription name to set.
+     * @param name The name of the subscription to set.
      */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Retrieves the duration of the subscription in months.
+     *
+     * @return The duration of the subscription in months.
+     */
+    public int getDuration() {
+        return duration;
+    }
 
+    /**
+     * Sets the duration of the subscription in months.
+     *
+     * @param duration The duration of the subscription to set.
+     */
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 
     /**
      * Retrieves the price of the subscription.
      *
-     * @return The subscription price.
+     * @return The price of the subscription.
      */
     public double getPrice() {
         return price;
@@ -73,7 +88,7 @@ public class Subscription {
     /**
      * Sets the price of the subscription.
      *
-     * @param price The subscription price to set.
+     * @param price The price of the subscription to set.
      */
     public void setPrice(double price) {
         this.price = price;
@@ -82,7 +97,7 @@ public class Subscription {
     /**
      * Retrieves the description of the subscription.
      *
-     * @return the description of the subscription.
+     * @return The description of the subscription.
      */
     public String getDescrizione() {
         return descrizione;
@@ -91,22 +106,9 @@ public class Subscription {
     /**
      * Sets the description of the subscription.
      *
-     * @param descrizione the description of the subscription to set.
+     * @param descrizione The description of the subscription to set.
      */
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-
-
-    
-
 }

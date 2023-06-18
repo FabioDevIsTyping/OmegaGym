@@ -1,6 +1,5 @@
 package com.autenticacion.controllers;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ public class SubscriptionController {
 
     @Autowired
     private SubscriptionRepository subscriptionRepository;
+    
     @Autowired
     private CardRepository cardRepository;
 
@@ -56,9 +56,9 @@ public class SubscriptionController {
     public boolean deleteSubscription(@PathVariable int id) {
         if (subscriptionRepository.existsById(id)) {
             List<Card> cardList = cardRepository.findBySubscription(subscriptionRepository.findById(id).get());
-            		cardList.forEach(card -> {
-                        cardRepository.deleteById(card.getId());
-                    		});
+            cardList.forEach(card -> {
+                cardRepository.deleteById(card.getId());
+            });
 
             subscriptionRepository.deleteById(id);
             return true;
@@ -79,11 +79,15 @@ public class SubscriptionController {
         return true;
     }
 
-
+    /**
+     * Retrieves a single subscription based on the ID.
+     *
+     * @param id the ID of the subscription to retrieve.
+     * @return the subscription object.
+     */
     @GetMapping("/getSingleSubscription/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
-        public Subscription getSubscription(@PathVariable int id) {
+    public Subscription getSubscription(@PathVariable int id) {
         return subscriptionRepository.findById(id).get();
     }
-
 }
