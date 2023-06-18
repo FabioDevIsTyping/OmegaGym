@@ -92,6 +92,28 @@ public class UserController {
 		return filteredUserList;
 	}
 
+	@GetMapping("/getAllUsersWithoutCard")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	public List<User> getAllUsersWithoutCard() {
+		List<User> userList = (List<User>) userRepository.findAll();
+		List<User> filteredUserList = new ArrayList<>();
+		List<User> usersWithoutCard = new ArrayList<>();
+		userList.forEach(user -> {
+			if (user.getRol().getId() == 2) {
+				filteredUserList.add(user);
+			}
+		});
+
+		filteredUserList.forEach(user -> {
+			if(cardRepository.findByUser(user)==null){
+				usersWithoutCard.add(user);
+			}
+		});
+		return usersWithoutCard;
+	}
+
+
+
 	@GetMapping("/getSingleUser/{username}")
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public User getSingleUser(@PathVariable String username) {

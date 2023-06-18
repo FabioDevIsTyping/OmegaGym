@@ -57,4 +57,14 @@ export class ClientService {
       headers: reqHeader
     });
   }
+
+
+  public getClientsWithoutCard(): Observable<User[]> {
+    var reqHeader = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+   });
+    return this.http.get<User[]>(this.url + "user/getAllUsersWithoutCard",{ headers: reqHeader });
+  }
+
 }

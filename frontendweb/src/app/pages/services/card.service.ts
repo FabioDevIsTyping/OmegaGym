@@ -46,8 +46,7 @@ export class CardService {
         'Authorization': 'Bearer ' + sessionStorage.getItem("token")
      });
      return this.http.delete<boolean>(this.url + "deleteCard" + "/" + id,{ headers: reqHeader } )
-  
-  
+
     }
 
 }

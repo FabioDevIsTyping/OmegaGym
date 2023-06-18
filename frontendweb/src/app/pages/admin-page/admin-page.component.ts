@@ -17,33 +17,33 @@ export class AdminPageComponent implements OnInit {
   constructor(private cardService: CardService, private subscriptionService: SubscriptionService,
     private clientService: ClientService) { }
 
-  isAdmin:boolean=false
-  subscriptionId:number=0
-  startDate:Date | undefined
-  endDate:Date | undefined
-  userId:number=0
-  subscriptionList:Subscription[]=[]
-  clientList:User[]=[]
-  username:string=""
-  user:User = new User
-  card:Card = new Card
+  isAdmin: boolean = false
+  subscriptionId: number = 0
+  startDate: Date | undefined
+  endDate: Date | undefined
+  userId: number = 0
+  subscriptionList: Subscription[] = []
+  clientList: User[] = []
+  username: string = ""
+  user: User = new User
+  card: Card = new Card
   selectedSubscription: number = 0
-  subscription:Subscription = new Subscription
+  subscription: Subscription = new Subscription
 
-  changeObject(obj:any){
+  changeObject(obj: any) {
     console.log(obj)
   }
 
 
-  ngOnInit()  {
-    if(sessionStorage.getItem("role")=='ADMIN'){
-      this.isAdmin=true
-      this.subscriptionService.getAllSubscriptions().subscribe(result=>{
-        this.subscriptionList=result
+  ngOnInit() {
+    if (sessionStorage.getItem("role") == 'ADMIN') {
+      this.isAdmin = true
+      this.subscriptionService.getAllSubscriptions().subscribe(result => {
+        this.subscriptionList = result
         console.log(this.subscriptionList)
       })
-      this.clientService.getAllUsers().subscribe(result=>{
-        this.clientList=result
+      this.clientService.getClientsWithoutCard().subscribe(result => {
+        this.clientList = result
         console.log(this.clientList)
       })
     }
@@ -61,28 +61,35 @@ export class AdminPageComponent implements OnInit {
         this.card.user.id = this.user.id;
         this.card.subscription = this.subscription;
         console.log(this.card);
-        this.cardService.insertCard(this.card).subscribe(
-          response => {
-            if (response instanceof HttpErrorResponse && response.status === 200){
-
-              console.log(response)
-
-            }
-
+        this.cardService.getCardFromClient(this.card.user.id).subscribe(result => {
+          if (result == null) {
+            this.cardService.insertCard(this.card).subscribe(
+              response => {
+                if (response instanceof HttpErrorResponse && response.status === 200) {
+                  console.log(response)
+                }
+              }
+            )
+            .add(()=>{
+              alert("Carta inserita con successo!")
+            })
           }
-        )
+          else{
+            alert("L'utente ha già una carta associata.")
+          }
+        })
       });
     });
-  
+
   }
-  
-  
-  
 
 
 
 
-    
-  
-  
+
+
+
+
+
+
 }

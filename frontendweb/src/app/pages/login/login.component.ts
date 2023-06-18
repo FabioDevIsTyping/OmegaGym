@@ -29,7 +29,10 @@ export class LoginComponent implements OnInit {
     this.role.role="USER"
     this.user.role=this.role.role
     console.log(this.user)
-    this.loginService.register(this.user).subscribe()
+    this.loginService.register(this.user).subscribe().add(()=>{
+      alert("Utente registrato con successo!")
+      this.isRegister=false
+    })
   }
 
   onLogin() {
