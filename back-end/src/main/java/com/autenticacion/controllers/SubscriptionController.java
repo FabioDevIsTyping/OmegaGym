@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import com.autenticacion.models.Card;
 import com.autenticacion.models.Subscription;
+import com.autenticacion.repositories.CardRepository;
 import com.autenticacion.repositories.SubscriptionRepository;
 
 @RestController
@@ -16,6 +18,8 @@ public class SubscriptionController {
 
     @Autowired
     private SubscriptionRepository subscriptionRepository;
+    @Autowired
+    private CardRepository cardRepository;
 
     /**
      * Retrieves a list of all subscriptions.
@@ -51,6 +55,11 @@ public class SubscriptionController {
     @PreAuthorize("hasAuthority('ADMIN')")
     public boolean deleteSubscription(@PathVariable int id) {
         if (subscriptionRepository.existsById(id)) {
+            List<Card> cardList = cardRepository.findBySubscription(subscriptionRepository.findById(id).get());
+            		cardList.forEach(card -> {
+                        cardRepository.deleteById(card.getId());
+                    		});
+
             subscriptionRepository.deleteById(id);
             return true;
         }

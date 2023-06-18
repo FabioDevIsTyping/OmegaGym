@@ -5,7 +5,6 @@ import { EmployeeComponent } from './pages/employee/employee.component';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RolesComponent } from './pages/roles/roles.component';
-import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { UserLayoutComponent } from './pages/user-layout/user-layout.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
@@ -85,10 +84,6 @@ const routes: Routes = [
         component: AddUserComponent
       },
       {
-        path: 'user-dashboard',
-        component: UserDashboardComponent
-      },
-      {
         path: 'user-list',
         component: UserListComponent
       }
@@ -101,10 +96,6 @@ const routes: Routes = [
       {
         path: 'way2addUser',
         component: AddUserComponent
-      },
-      {
-        path: 'way2user-dashboard',
-        component: UserDashboardComponent
       },
       {
         path: 'way2user-list',

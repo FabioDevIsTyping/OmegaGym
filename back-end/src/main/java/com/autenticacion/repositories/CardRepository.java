@@ -8,12 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.autenticacion.models.Card;
+import com.autenticacion.models.Subscription;
 import com.autenticacion.models.User;
 
 
 
 public interface CardRepository extends JpaRepository<Card, Integer> {
     Card findByUser(User user);
+    List<Card> findBySubscription(Subscription subscription);
 @Query("SELECT c FROM Card c WHERE c.endDate < :currentDate AND c.isActive = true")
 List<Card> findExpiredCards(@Param("currentDate") LocalDate currentDate);
 

@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
-import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { RolesComponent } from './pages/roles/roles.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -29,7 +28,6 @@ import { AddSubscriptionComponent } from './pages/add-subscription/add-subscript
     AppComponent,
     AddUserComponent,
     UserListComponent,
-    UserDashboardComponent,
     RolesComponent,
     EmployeeComponent,
     LoginComponent,
