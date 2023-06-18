@@ -19,7 +19,7 @@ In questi anni all'interno del territorio italiano stanno aumentando sempre di p
 L'obiettivo del progetto è quello di fornire alle piccole palestre una facile soluzione per poter diventare delle palestre aperte h24.
 Attraverso l'introduzione di un applicazione che fornisce un metodo al proprietario della palestra per poter interagire e gestire i clienti che hanno diritto di accedere alla propria palestra e di customizzare i tipi di abbonamenti disponibili ai clienti. Inoltre l'applicazione è anche rivolta all'utente che potrà vedere lo stato attuale della propria carta e potrà effettuare molte altre operazioni che non sono state ancora implementate.
 
-#### Che cos'è l'MVC?
+#### Che cos'è il pattern MVC?
 
 L'MVC è un design pattern, frequentemente utilizzato nell' elaborazione di applicazioni web, che sta a significare Model-View-Controller Pattern ed è stato adottato per lo sviluppo di questa applicazione. 
 In breve il significato è il seguente:
