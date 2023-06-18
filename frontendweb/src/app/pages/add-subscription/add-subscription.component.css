@@ -1,57 +1,71 @@
 .subscription-form {
-  max-width: 400px;
+  position: relative;
   margin: 0 auto;
+  max-width: 400px;
   padding: 20px;
-  background-color: #f2f2f2;
-  border-radius: 5px;
+  background-color: #f2f2f2; /* Update background color */
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-h2 {
+form {
+  height: auto;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  position: relative;
+  transform: none;
+  top: unset;
+  left: unset;
+  border-radius: unset;
+  backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+form h2 {
   font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 20px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: center;
 }
 
 label {
-  font-weight: bold;
   display: block;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
-input[type="text"],
-input[type="number"],
-textarea {
+input {
+  display: block;
+  height: 40px;
   width: 100%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.07);
   border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+::placeholder {
+  color: #e5e5e5;
 }
 
 button {
-  padding: 8px 16px;
+  margin-top: 30px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 12px 0;
   font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
+  font-weight: 600;
+  border-radius: 5px;
   cursor: pointer;
 }
-
-button i {
-  margin-right: 5px;
-}
-.notification {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    background-color: #f44336;
-    color: white;
-    text-align: center;
-    z-index: 9999;
-  }
-  

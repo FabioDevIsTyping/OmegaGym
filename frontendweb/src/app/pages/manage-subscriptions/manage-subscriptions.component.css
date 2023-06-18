@@ -1,27 +1,26 @@
 .table-container {
   font-family: Arial, sans-serif;
   margin-top: 20px;
-  display: flex;
-  justify-content: center;
   background-color: #f9f9f9;
   padding: 20px;
 }
 
 .search-container {
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .search-icon {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
   color: #999;
-  pointer-events: none;
 }
 
 .search-input {
-  padding-right: 30px; 
+  flex-grow: 1;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 .subscription-table {
@@ -29,7 +28,8 @@
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: left;
 }
@@ -83,4 +83,20 @@ button:disabled {
   font-size: 18px;
   color: #000;
   margin-bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .search-container {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .search-input {
+    margin-bottom: 10px;
+  }
+
+  .table-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 }
