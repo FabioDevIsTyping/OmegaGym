@@ -72,6 +72,30 @@ export class ManageSubscriptionsComponent implements OnInit {
       this.currentSortColumn = column;
       this.sortDirection = 'asc';
     }
-
+  
+    if (this.currentSortColumn === 'name') {
+      this.filteredSubscriptionList.sort((a: Subscription, b: Subscription) => {
+        const nameA = a.name?.toLowerCase();
+        const nameB = b.name?.toLowerCase();
+        if (nameA && nameB) {
+          if (nameA < nameB) {
+            return this.sortDirection === 'asc' ? -1 : 1;
+          } else if (nameA > nameB) {
+            return this.sortDirection === 'asc' ? 1 : -1;
+          }
+        }
+        return 0;
+      });
+    } else if (this.currentSortColumn === 'id') {
+      this.filteredSubscriptionList.sort((a: Subscription, b: Subscription) => {
+        const idA = a.id;
+        const idB = b.id;
+        if (idA && idB) {
+          return this.sortDirection === 'asc' ? idA - idB : idB - idA;
+        }
+        return 0;
+      });
+    }
   }
+  
 }
