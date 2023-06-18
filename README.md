@@ -1,10 +1,11 @@
 
 # Progettazione di Applicazioni Web e Mobili (6 CFU) - De Vitis
 Progetto realizzato individualmente per l'esame di Progettazione di Applicazioni Web e Mobili presso l'università di Camerino. 
-Il progetto è una semplice applicazione per facilitare il management di una palestra.
-Difatti sarà possibile inserire una carta per il cliente che avrà dei parametri ben definiti come una data di inizio, una data di scadenza e la tipologia di abbonamento associato alla carta.
-Il cliente potrà accedere ad una propria area personale dove sarà possibile accedere alle informazioni riguardanti la propria carta e prendere visione del suo stato.
-Vi sarà inoltre una dashboard per l'amministratore della piattaforma dove potrà effettuare diverse operazioni di management riguardanti i clienti della palestra che sono registrati e le carte associate ad essi. 
+Il progetto è una semplice applicazione user friendly per facilitare il management di una palestra.
+Vi sarà infatti una porzione dell'app dove l'admin, ad esempio il titolare della palestra o un segretario, potrà effettuare operazioni di gestione del database in maniera semplificata e confortevole e gestire facilmente i clienti presenti all'interno dell'applicazione, le carte dei clienti e potrà inserire nuove tipologie di abbonamento a seconda dei criteri che si ritengono più opportuni.
+D'altra parte il cliente, ovvero l'utente che 
+Il cliente potrà accedere ad una propria area personale dove sarà possibile accedere alle informazioni riguardanti la propria carta e prendere visione del suo stato e di informazioni quali la scadenza del proprio abbonamento ecc.
+
 
 
 ## FAQ
@@ -18,13 +19,13 @@ In questi anni all'interno del territorio italiano stanno aumentando sempre di p
 L'obiettivo del progetto è quello di fornire alle piccole palestre una facile soluzione per poter diventare delle palestre aperte h24.
 Attraverso l'introduzione di un applicazione che fornisce un metodo al proprietario della palestra per poter interagire e gestire i clienti che hanno diritto di accedere alla propria palestra e di customizzare i tipi di abbonamenti disponibili ai clienti. Inoltre l'applicazione è anche rivolta all'utente che potrà vedere lo stato attuale della propria carta e potrà effettuare molte altre operazioni che non sono state ancora implementate.
 
-#### Il progetto è finito?
+#### Che cos'è il pattern MVC?
 
-Assolutamente no, il progetto è in fase di sviluppo per il momento mi sono occupato del lato gestionale del database e ho introdotto le funzionalità principali ed un autenticazione attraverso la JWT Security. Tuttavia vi sono moltissime funzionalità che possono essere introdotte per favorire l'automazione di tutta l'attività.
-Come ad esempio l'adottamento di uno job scheduler che mantenga le informazioni sui job e sui trigger anche dopo il riavvio del programma o se si hanno più istanze dello scheduler in esecuzione in un cluster.
-Il tutto comporterebbe però un notevole investimento di tempo, denaro e richiederebbe conoscenze anche dal punto di vista hardware.
-Per il momento è stata quindi sviluppata una piccola parte di quello che sarebbe il progetto finale da poi inserire nel mercato.
-
+L'MVC è un design pattern, frequentemente utilizzato nell' elaborazione di applicazioni web, che sta a significare Model-View-Controller Pattern ed è stato adottato per lo sviluppo di questa applicazione. 
+In breve il significato è il seguente:
+- Model : contiene i metodi di accesso ai dati
+- View : si occupa di visualizzare i dati all'utente e gestisce l'interazione fra quest'ultimo e l'infrastruttura sottostante
+- Controller: riceve i comandi dell'utente attraverso il View e reagisce eseguendo delle operazioni che possono interessare il Model e che portano generalmente ad un cambiamento di stato del View.
 
 ## Tecnologie utilizzate
 
@@ -65,7 +66,7 @@ Il funzionamento di Quartz si basa su alcuni concetti chiave:
 
 - Scheduler: Il scheduler rappresenta il core di Quartz. È responsabile dell'orchestrazione dei job e dei trigger. Gestisce la pianificazione, l'esecuzione e il monitoraggio dei job. Il scheduler può essere configurato per avviarsi all'avvio dell'applicazione o può essere programmato per essere avviato in un momento specifico. Una volta avviato, il scheduler si occupa di eseguire i job in base ai trigger specificati.
 
-Quartz è stato utilizzato all'interno del progetto per verificare quando le carte presenti all'interno del database siano scadute. Ovvero quando la data odierna è maggiore alla data di scadenza/fine abbonamento. Di conseguenza verrà settato il valore boolean della carta chiamato isValid a false.
+Quartz è stato utilizzato all'interno del progetto per verificare quando le carte presenti all'interno del database siano scadute. Ovvero quando la data odierna è maggiore alla data di scadenza/fine abbonamento. Di conseguenza la carta verrà eliminata dal database.
 ## Authors
 
 - [@De Vitis Fabio Michele](https://github.com/FabioDevIsTyping)
