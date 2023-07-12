@@ -12,6 +12,10 @@ import { ManageClientComponent } from './pages/manage-client/manage-client.compo
 import { ManageCardsComponent } from './pages/manage-cards/manage-cards.component';
 import { ManageSubscriptionsComponent } from './pages/manage-subscriptions/manage-subscriptions.component';
 import { AddSubscriptionComponent } from './pages/add-subscription/add-subscription.component';
+import { ChatComponent } from './chat/chat.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QRCodeModule } from 'angularx-qrcode';
+import { CardQrCodeComponent } from './card-qr-code/card-qr-code.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +28,16 @@ import { AddSubscriptionComponent } from './pages/add-subscription/add-subscript
     ManageCardsComponent,
     ManageSubscriptionsComponent,
     AddSubscriptionComponent,
+    ChatComponent,
+    CardQrCodeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
