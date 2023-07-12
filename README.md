@@ -1,5 +1,5 @@
 
-# Progettazione di Applicazioni Web e Mobili (6 CFU) - De Vitis
+# Progettazione di Applicazioni Web e Mobili (OmegaGym) - FabioDev
 Progetto realizzato individualmente per l'esame di Progettazione di Applicazioni Web e Mobili presso l'università di Camerino. 
 Il progetto è una semplice applicazione user friendly per facilitare il management di una palestra.
 Vi sarà infatti una porzione dell'app dove l'admin, ad esempio il titolare della palestra o un segretario, potrà effettuare operazioni di gestione del database in maniera semplificata e confortevole e gestire facilmente i clienti presenti all'interno dell'applicazione, le carte dei clienti e potrà inserire nuove tipologie di abbonamento a seconda dei criteri che si ritengono più opportuni.
